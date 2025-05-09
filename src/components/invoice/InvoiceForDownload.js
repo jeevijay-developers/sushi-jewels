@@ -9,6 +9,7 @@ import {
 } from "@react-pdf/renderer";
 import dayjs from "dayjs";
 
+
 Font.register({
   family: "Open Sans",
   fonts: [
