@@ -90,18 +90,21 @@ const MainCarousel = () => {
             spaceBetween: 30,
           },
         }}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Pagination, Navigation]}
         className="mySwiper"
       >
         {sliderData?.map((item, i) => (
-          <SwiperSlide className="w-full relative overflow-hidden" key={i + 1}>
+          <SwiperSlide
+            className="w-full   relative overflow-hidden"
+            key={i + 1}
+          >
             {/* Updated image container with better aspect ratio handling */}
-            <div className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[16/9]">
+            <div className="relative w-full   aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[16/5]">
               <Image
                 src={item.image || "/slider/slider-1.jpg"}
                 alt={item.title || "Slider Image"}
                 fill
-                className="object-cover object-center" // Added object-center for better positioning
+                className="object-cover object-center h-full" // Added object-center for better positioning
                 priority
                 sizes="100vw"
                 quality={85}

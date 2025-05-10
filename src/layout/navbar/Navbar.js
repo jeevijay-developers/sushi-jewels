@@ -6,10 +6,13 @@ import { useRouter } from "next/router";
 import { useCart } from "react-use-cart";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaShoppingCart, FaUser, FaBell } from "react-icons/fa";
+import { TiThMenu } from "react-icons/ti";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import useTranslation from "next-translate/useTranslation";
 import { FaRegUser } from "react-icons/fa";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 //internal import
 import { getUserSession } from "@lib/auth";
@@ -23,6 +26,7 @@ import Category from "@components/category/Category";
 import MobileFooter from "@layout/footer/MobileFooter";
 import { FiAlignLeft, FiBell, FiShoppingCart } from "react-icons/fi";
 import CategoryDrawer from "@components/drawer/CategoryDrawer";
+import NavbarSearch from "./NavbarSearch";
 
 const Navbar = () => {
   const { t, lang } = useTranslation("common");
@@ -56,7 +60,7 @@ const Navbar = () => {
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 relative">
           <div className="flex  flex-col items-center py-1">
             {/* Top Section - Logo and Icons */}
-            <div className="w-full grid grid-cols-3 items-center justify-between">
+            <div className="w-full flex  items-center justify-between">
               {/* Logo Section - Left */}
               {/* this code enables drawer */}
               <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
@@ -67,14 +71,14 @@ const Navbar = () => {
                   className="flex items-center justify-center flex-shrink-0 h-auto relative focus:outline-none"
                 >
                   <span className="lg:hidden z-30 text-xl text-black">
-                    <FiAlignLeft className="w-6 h-6 " />
+                    <TiThMenu className="w-6 h-6 " />
                   </span>
                 </button>
               </div>
-              <div className="w-24 sm:w-28 mx-auto flex items-center justify-center">
+              <div className="w-24 sm:w-28 items-start justify-start hidden lg:flex ">
                 <img
-                  width={60}
-                  height={60}
+                  width={40}
+                  height={40}
                   className="w-full h-auto "
                   priority
                   src="/logo/gray-logo.png"
@@ -84,6 +88,7 @@ const Navbar = () => {
               {/* <MobileFooter/> */}
               {/* Icons Section - Right */}
               <div className="flex items-center space-x-3 lg:space-x-10  justify-end">
+                <NavbarSearch modifier="bp5-large bp5-round" />
                 <button
                   className="text-black text-2xl font-bold"
                   aria-label="Alert"

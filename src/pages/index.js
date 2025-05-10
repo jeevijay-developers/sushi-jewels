@@ -2,8 +2,8 @@ import { SidebarContext } from "@context/SidebarContext";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import FormalTrouser from "src/formal-trouser/FormalTrouser";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
 
 //internal import
 import Layout from "@layout/Layout";
@@ -66,7 +66,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
         <Loading loading={isLoading} />
       ) : (
         <Layout>
-          <div className="min-h-screen">
+          <div className="">
             {/* <StickyCart /> */}
             <div className="bg-white">
               <div className="mx-auto py-1">
@@ -128,7 +128,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 <div className="mb-10 flex ">
                   <div className=" w-full lg:w-2/5">
                     <h2 className="font-[lora] font-thin text-[2rem] ml-4 md:ml-8 lg:ml-12 lg:text-[3.25rem] mb-2">
-                    Bestseller
+                      Bestseller
                       <CMSkeleton
                         count={1}
                         height={30}
@@ -269,16 +269,17 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                             ))}
                         </div>
                       )}
-                      {showLoadMoreDiscounted && discountProducts.length > 4 && (
-                        <div className="flex justify-center mt-8">
-                          <button
-                            onClick={handleLoadMoreDiscounted}
-                            className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
-                          >
-                            View More
-                          </button>
-                        </div>
-                      )}
+                      {showLoadMoreDiscounted &&
+                        discountProducts.length > 4 && (
+                          <div className="flex justify-center mt-8">
+                            <button
+                              onClick={handleLoadMoreDiscounted}
+                              className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
+                            >
+                              View More
+                            </button>
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
