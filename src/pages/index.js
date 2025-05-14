@@ -23,8 +23,8 @@ import Testimonials from "@components/Testimonials/Testimonials";
 import ClassicShirtCard from "@components/classic-shirt/classicShirtCard";
 import ShopByCategory from "@components/ShopByCategory/ShopByCategory";
 import WhyChooseUs from "@components/whyChooseUs/WhyChooseUs";
-import ShirtGallery from "@components/shirt-gallery/ShirtGallery";
 import GiftingGuide from "@components/GiftingGuide/GiftingGuide";
+import JewelleryGallery from "@components/jwellery-gallary/JewelleryGallery";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -220,7 +220,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             </div>
             <GiftingGuide />
             <WhyChooseUs />
-            <ShirtGallery />
+            <JewelleryGallery />
 
             {/* discounted products */}
             {storeCustomizationSetting?.home?.discount_product_status &&
