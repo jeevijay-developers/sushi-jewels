@@ -215,12 +215,12 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               <ShopByCategory />
             </div>
 
-            {/* <div className="mt-[4.5rem] hover:cursor-pointer">
+            <div className="mt-[4.5rem] hover:cursor-pointer">
               <FormalTrouser />
-            </div> */}
-<GiftingGuide/>
+            </div>
+            <GiftingGuide />
             <WhyChooseUs />
-            {/* <ShirtGallery /> */}
+            <ShirtGallery />
 
             {/* discounted products */}
             {storeCustomizationSetting?.home?.discount_product_status &&
