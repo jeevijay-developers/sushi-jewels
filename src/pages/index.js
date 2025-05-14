@@ -123,7 +123,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 </div>
               </div>
             )} */}
-
+            {/* "" */}
             {/* popular products */}
             {storeCustomizationSetting?.home?.popular_products_status && (
               <div className=" bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
