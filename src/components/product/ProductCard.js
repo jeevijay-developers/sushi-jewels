@@ -149,7 +149,7 @@ const ProductCard = ({ product, attributes }) => {
               originalPrice={product?.prices?.originalPrice}
             />
 
-            {inCart(product._id) ? (
+            {/* {inCart(product._id) ? (
               <div>
                 {items.map(
                   (item) =>
@@ -194,8 +194,16 @@ const ProductCard = ({ product, attributes }) => {
                   <IoBagAddSharp />
                 </span>{" "}
               </button>
-            )}
+            )} */}
           </div>
+
+          {/* send Query button */}
+          <button
+            className="bg-customPinkDark w-full my-2 hover:bg-customPink text-white items-center font-bold py-2 px-4 rounded"
+            onClick={() => console.log("Send Query button clicked")}
+          >
+            Send Query
+          </button>
           {/* share button */}
           <div
             className={`absolute transition-transform ease-in-out shadow-lg shadow-gray-400/35 bg-gray-100 p-1 rounded-3xl ${
