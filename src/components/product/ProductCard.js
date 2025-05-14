@@ -43,13 +43,28 @@ const ProductCard = ({ product, attributes }) => {
   const { showingTranslateValue } = useUtilsFunction();
   const router = useRouter();
   const currency = globalSetting?.default_currency || "$";
-
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
   // console.log('attributes in product cart',attributes)
 
   const toggleToolTip = () => {
     setIsToolTipVisible((prev) => !prev);
   };
-
+  useEffect(() => {
+    let intervalId;
+    if (
+      isHovering &&
+      Array.isArray(product.image) &&
+      product.image.length > 1
+    ) {
+      intervalId = setInterval(() => {
+        setCurrentImageIndex(
+          (prevIndex) => (prevIndex + 1) % product.image.length
+        );
+      }, 1000); // Change image every 1 second
+    }
+    return () => clearInterval(intervalId);
+  }, [isHovering, product.image]);
   const handleAddItem = (p) => {
     if (p.stock < 1) return notifyError("Insufficient stock!");
 
@@ -95,6 +110,11 @@ const ProductCard = ({ product, attributes }) => {
           <Discount product={product} />
         </div>
         <div
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => {
+            setIsHovering(false);
+            setCurrentImageIndex(0);
+          }}
           onClick={() => {
             router.push(`/product/${product.slug}`);
           }}
@@ -104,8 +124,8 @@ const ProductCard = ({ product, attributes }) => {
             {Array.isArray(product.image) && product.image.length > 0 ? (
               <div className="relative w-full h-full">
                 <ImageWithFallback
-                  src={product.image[0]}
-                  alt={showingTranslateValue(product?.title) || "Product Image"} // Added meaningful alt text
+                  src={product.image[currentImageIndex]}
+                  alt={showingTranslateValue(product?.title) || "Product Image"}
                   fill
                   className="object-contain transition duration-700 ease-in-out transform group-hover:scale-105"
                   sizes="(max-width: 640px) 48vw, (max-width: 768px) 44vw, 22vw"
