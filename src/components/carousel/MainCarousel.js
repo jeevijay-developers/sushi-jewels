@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,11 +12,15 @@ import "swiper/css/navigation";
 
 import useGetSetting from "@hooks/useGetSetting";
 import useUtilsFunction from "@hooks/useUtilsFunction";
-
+import JewelleryQueryForm from "@components/form/JewelleryQueryForm";
+import { TbBrandGoogleBigQuery } from "react-icons/tb";
+import CategoryCarousel from "./CategoryCarousel";
 const MainCarousel = () => {
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue, showingUrl, showingImage } =
     useUtilsFunction();
+  const [displayQueryForm, setDisplayQueryForm] = React.useState(false);
+  const [isSmallScreen, setIsSmallScreen] = React.useState(false);
 
   const sliderData = [
     {
@@ -23,40 +28,63 @@ const MainCarousel = () => {
       url: showingUrl(storeCustomizationSetting?.slider?.first_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.first_img) ||
-        "/slider/slider-1.jpg",
+        "https://as2.ftcdn.net/jpg/05/04/18/13/1000_F_504181319_z6YLPQfDbwhzW0xsceHczZ3lsEFppefV.webp",
     },
     {
       id: 2,
       url: showingUrl(storeCustomizationSetting?.slider?.second_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.second_img) ||
-        "/slider/slider-2.jpg",
+        "https://as2.ftcdn.net/jpg/05/04/18/13/1000_F_504181319_z6YLPQfDbwhzW0xsceHczZ3lsEFppefV.webp",
     },
     {
       id: 3,
       url: showingUrl(storeCustomizationSetting?.slider?.third_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.third_img) ||
-        "/slider/slider-3.jpg",
+        "https://as2.ftcdn.net/jpg/05/04/18/13/1000_F_504181319_z6YLPQfDbwhzW0xsceHczZ3lsEFppefV.webp",
     },
     {
       id: 4,
       url: showingUrl(storeCustomizationSetting?.slider?.four_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.four_img) ||
-        "/slider/slider-1.jpg",
+        "https://as2.ftcdn.net/jpg/05/04/18/13/1000_F_504181319_z6YLPQfDbwhzW0xsceHczZ3lsEFppefV.webp",
     },
     {
       id: 5,
       url: showingUrl(storeCustomizationSetting?.slider?.five_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.five_img) ||
-        "/slider/slider-2.jpg",
+        "https://as2.ftcdn.net/jpg/05/04/18/13/1000_F_504181319_z6YLPQfDbwhzW0xsceHczZ3lsEFppefV.webp",
     },
   ];
 
+  const ref = useRef(null);
+  useEffect(() => {
+    const handleWindowResize = () => {
+      if (window.innerWidth < 1280) {
+        setDisplayQueryForm(false);
+        setIsSmallScreen(true);
+      } else {
+        setDisplayQueryForm(true);
+        setIsSmallScreen(false);
+        if (ref.current) {
+          ref.current.style.right = "46px";
+          ref.current.style.bottom = "0px";
+        }
+      }
+    };
+
+    handleWindowResize();
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [ref]);
+
   return (
-    <>
+    <div className="relative">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -126,7 +154,49 @@ const MainCarousel = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+
+      <div className="xl:w-[62%] w-full">
+        <CategoryCarousel />
+      </div>
+      {displayQueryForm ? (
+        <div>
+          <div
+            ref={ref}
+            className={`xl:w-[35%] bg-white mx-auto w-full lg:absolute p-9 xl:p-0 xl:overflow-hidden ${
+              isSmallScreen ? "absolute top-0" : "flex"
+            } xl:bg-transparent lg:flex-row items-center xl:right-[46px] xl:bottom-[-0px] z-10 shadow-2xl overflow-hidden`}
+          >
+            <div className="xl:w-full flex justify-center items-center pt-2">
+              <JewelleryQueryForm setDisplayQueryForm={setDisplayQueryForm} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div
+          className="flex justify-center items-center w-fit py-[5px] px-[10px] rounded-[44px] bg-[#ff007a] absolute right-[5%] top-[2%] md:top-[53%]  md:bottom-[38%] z-10 hover:cursor-pointer"
+          style={{
+            boxShadow:
+              "inset 3px 3px 3px #ffffff63, inset -3px -3px 3px #00000029",
+          }}
+          onClick={() => {
+            setDisplayQueryForm(true);
+          }}
+        >
+          <TbBrandGoogleBigQuery className="text-[#ffffff] lg:text-[40px] text-[20px] " />
+          <p
+            className=""
+            style={{
+              fontWeight: "600",
+              color: "white",
+              marginLeft: "10px",
+              marginBottom: "0px",
+            }}
+          >
+            Query Form
+          </p>
+        </div>
+      )}
+    </div>
   );
 };
 

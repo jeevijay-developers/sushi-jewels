@@ -49,9 +49,10 @@ module.exports = withPWA({
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "*",
       },
     ],
+    domains: ["as2.ftcdn.net"],
   },
 
   ...nextTranslate(),

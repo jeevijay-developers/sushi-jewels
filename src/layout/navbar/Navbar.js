@@ -64,7 +64,7 @@ const Navbar = () => {
               {/* Logo Section - Left */}
               {/* this code enables drawer */}
               <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
-              <div>
+              <div className="d-flex lg:hidden">
                 <button
                   aria-label="Bar"
                   onClick={toggleCategoryDrawer}
@@ -75,25 +75,27 @@ const Navbar = () => {
                   </span>
                 </button>
               </div>
-              <div className="w-24 sm:w-28 items-start justify-start hidden lg:flex ">
+              <div className="w-20 sm:w-28 items-start justify-start hidden lg:flex ">
                 <img
-                  width={40}
-                  height={40}
-                  className="w-full h-auto "
+                  width={80}
+                  height={80}
+                  className=" "
                   priority
-                  src="/logo/gray-logo.png"
+                  src="/logo/WhatsApp Image 2025-05-10 at 4.49.19 PM.jpeg"
                   alt="logo"
                 />
+              </div>
+              <div className="lg:w-[70%] w-[50%] ">
+                <NavbarSearch modifier="bp5-large bp6-round" />
               </div>
               {/* <MobileFooter/> */}
               {/* Icons Section - Right */}
               <div className="flex items-center space-x-3 lg:space-x-10  justify-end">
-                <NavbarSearch modifier="bp5-large bp5-round" />
                 <button
                   className="text-black text-2xl font-bold"
                   aria-label="Alert"
                 >
-                  <FiBell className="w-6 h-6" />
+                  <FiBell className="w-7 h-7" />
                 </button>
                 <button
                   aria-label="Total"
@@ -103,7 +105,7 @@ const Navbar = () => {
                   <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
                     {totalItems}
                   </span>
-                  <FiShoppingCart className="w-6 h-6 " />
+                  <FiShoppingCart className="w-7 h-7 " />
                 </button>
                 <button
                   className="text-black text-2xl hover:cursor-pointer font-bold hidden lg:block"
@@ -112,7 +114,7 @@ const Navbar = () => {
                   {userInfo?.image ? (
                     <Link
                       href="/user/dashboard"
-                      className="relative top-1 w-6 h-6"
+                      className="relative top-1 w-7 h-7"
                     >
                       <Image
                         width={29}
@@ -131,7 +133,7 @@ const Navbar = () => {
                     </Link>
                   ) : (
                     <Link href="/auth/login">
-                      <FaRegUser className="w-6 h-6 " />
+                      <FaRegUser className="w-7 h-7 " />
                     </Link>
                   )}
                 </button>

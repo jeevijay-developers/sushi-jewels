@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useRef } from "react";
@@ -33,8 +34,6 @@ const CategoryCarousel = () => {
     queryFn: async () => await CategoryServices.getShowingCategory(),
   });
 
-  // console.log("data", data, "error", error, "isFetched", isFetched);
-
   const handleCategoryClick = (id, category) => {
     const category_name = showingTranslateValue(category)
       ?.toLowerCase()
@@ -65,12 +64,12 @@ const CategoryCarousel = () => {
           // when window width is >= 640px
           375: {
             width: 375,
-            slidesPerView: 2,
+            slidesPerView: 3,
           },
           // when window width is >= 768px
           414: {
             width: 414,
-            slidesPerView: 3,
+            slidesPerView: 5,
           },
           // when window width is >= 768px
           660: {
@@ -114,38 +113,36 @@ const CategoryCarousel = () => {
             {error?.response?.data?.message || error?.message}
           </p>
         ) : (
-          <div>
-            {data[0]?.children?.map((category, i) => (
-              <SwiperSlide key={i + 1} className="group">
-                <div
-                  onClick={() =>
-                    handleCategoryClick(category?._id, category.name)
-                  }
-                  className="text-center cursor-pointer p-3 bg-white rounded-lg"
-                >
-                  <div className="bg-white p-2 mx-auto w-10 h-10 rounded-full shadow-md">
-                    <div className="relative w-6 h-8">
-                      <Image
-                        src={
-                          category?.icon ||
-                          "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                        }
-                        alt="category"
-                        width={40}
-                        height={40}
-                        className="object-fill"
-                      />
-                    </div>
+          data[0]?.children?.map((category, i) => (
+            <SwiperSlide key={i + 1} className="group">
+              <div
+                onClick={() =>
+                  handleCategoryClick(category?._id, category.name)
+                }
+                className="text-center cursor-pointer p-3 rounded-lg"
+              >
+                <div className="bg-white mx-auto w-full h-full rounded-full shadow-md">
+                  <div className="relative rounded-xl">
+                    <Image
+                      src={
+                        category?.icon ||
+                        "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                      }
+                      alt="category"
+                      width={40}
+                      height={40}
+                      className="object-fill w-full h-full rounded-2xl"
+                    />
                   </div>
-
-                  <h3 className="text-xs text-gray-600 mt-2 font-serif group-hover:text-customPink">
-                    {showingTranslateValue(category?.name)}
-                  </h3>
                 </div>
-              </SwiperSlide>
-            ))}
-          </div>
+                <h3 className="text-xs text-gray-900 font-bold mt-2 font-serif group-hover:text-customPink">
+                  {showingTranslateValue(category?.name)}
+                </h3>
+              </div>
+            </SwiperSlide>
+          ))
         )}
+
         <button ref={prevRef} className="prev">
           <IoChevronBackOutline />
         </button>
