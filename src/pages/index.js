@@ -24,6 +24,7 @@ import ClassicShirtCard from "@components/classic-shirt/classicShirtCard";
 import ShopByCategory from "@components/ShopByCategory/ShopByCategory";
 import WhyChooseUs from "@components/whyChooseUs/WhyChooseUs";
 import ShirtGallery from "@components/shirt-gallery/ShirtGallery";
+import GiftingGuide from "@components/GiftingGuide/GiftingGuide";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -214,10 +215,10 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               <ShopByCategory />
             </div>
 
-            <div className="mt-[4.5rem] hover:cursor-pointer">
+            {/* <div className="mt-[4.5rem] hover:cursor-pointer">
               <FormalTrouser />
-            </div>
-
+            </div> */}
+<GiftingGuide/>
             <WhyChooseUs />
             {/* <ShirtGallery /> */}
 
