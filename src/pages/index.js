@@ -21,8 +21,10 @@ import AttributeServices from "@services/AttributeServices";
 import CMSkeleton from "@components/preloader/CMSkeleton";
 import Testimonials from "@components/Testimonials/Testimonials";
 import ClassicShirtCard from "@components/classic-shirt/classicShirtCard";
+import ShopByCategory from "@components/ShopByCategory/ShopByCategory";
 import WhyChooseUs from "@components/whyChooseUs/WhyChooseUs";
-import ShirtGallery from "@components/shirt-gallery/ShirtGallery";
+import GiftingGuide from "@components/GiftingGuide/GiftingGuide";
+import JewelleryGallery from "@components/jwellery-gallary/JewelleryGallery";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -202,17 +204,23 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* Classic Plain Shirt */}
             <div>
               <h1 className="px-6 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center">
-                Classic Shirts
+                Shop by Recipient
               </h1>
               <ClassicShirtCard />
+            </div>
+            <div>
+              {/* <h1 className="px-6 my-3 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center">
+                Shop By Price
+              </h1> */}
+              <ShopByCategory />
             </div>
 
             <div className="mt-[4.5rem] hover:cursor-pointer">
               <FormalTrouser />
             </div>
-
+            <GiftingGuide />
             <WhyChooseUs />
-            <ShirtGallery />
+            <JewelleryGallery />
 
             {/* discounted products */}
             {storeCustomizationSetting?.home?.discount_product_status &&

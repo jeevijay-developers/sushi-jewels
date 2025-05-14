@@ -6,7 +6,7 @@ export default function ShirtImages() {
         {/* Image 1 */}
         <div className="absolute top-6 left-4 w-40 h-56 sm:top-10 sm:left-10 sm:w-56 sm:h-72 rounded-xl overflow-hidden shadow-lg z-20 rotate-[-2deg] sm:rotate-[-3deg]">
           <img
-            src="/shirts/shirt1.jpeg"
+            src="/jwellery/1.jpg"
             alt="Black White Printed Shirt"
             className="w-full h-full object-cover"
           />
@@ -15,7 +15,7 @@ export default function ShirtImages() {
         {/* Image 2 */}
         <div className="absolute top-40 right-2 w-48 h-64 sm:top-32 sm:right-12 sm:w-64 sm:h-80 rounded-xl overflow-hidden shadow-2xl z-30 rotate-[1deg] sm:rotate-[2deg]">
           <img
-            src="/shirts/shirt2.jpg"
+            src="/jwellery/2.jpg"
             alt="Black and Maroon Shirts"
             className="w-full h-full object-cover"
           />
@@ -24,7 +24,7 @@ export default function ShirtImages() {
         {/* Image 3 - Hidden on mobile */}
         <div className="hidden lg:block absolute top-0 right-0 w-52 h-68 rounded-xl overflow-hidden shadow-md z-10 rotate-[5deg]">
           <img
-            src="/shirts/shirt3.jpg"
+            src="/jwellery/3.jpg"
             alt="White Shirt"
             className="w-full h-full object-cover"
           />
@@ -33,7 +33,7 @@ export default function ShirtImages() {
         {/* Image 4 - Hidden on mobile */}
         <div className="hidden lg:block absolute bottom-14 left-24 w-60 h-72 rounded-xl overflow-hidden shadow-xl z-20 rotate-[-4deg]">
           <img
-            src="/shirts/shirt4.jpeg"
+            src="/jwellery/4.jpg"
             alt="Maroon Shirt Closeup"
             className="w-full h-full object-cover"
           />
