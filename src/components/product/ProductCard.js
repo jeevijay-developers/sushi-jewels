@@ -86,7 +86,10 @@ const ProductCard = ({ product, attributes }) => {
         />
       )}
 
-      <div data-aos="fade-up" className="para-hover w-[48%] sm:w-[45%] md:w-[31%] lg:w-[23%] group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center relative hover:shadow-2xl">
+      <div
+        data-aos="fade-up"
+        className="para-hover w-[48%] sm:w-[45%] md:w-[31%] lg:w-[23%] group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center relative hover:shadow-2xl"
+      >
         <div className="w-full flex justify-between">
           {/* <Stock product={product} stock={product.stock} card /> */}
           <Discount product={product} />
@@ -98,11 +101,11 @@ const ProductCard = ({ product, attributes }) => {
           className="relative w-full pt-[100%] cursor-pointer" // Square aspect ratio using padding-top
         >
           <div className="absolute top-0 left-0 w-full h-full p-2">
-            {product.image[0] ? (
+            {Array.isArray(product.image) && product.image.length > 0 ? (
               <div className="relative w-full h-full">
-                <ImageWithFallback 
-                  src={product.image[0]} 
-                  alt={showingTranslateValue(product?.title) || 'Product Image'} // Added meaningful alt text
+                <ImageWithFallback
+                  src={product.image[0]}
+                  alt={showingTranslateValue(product?.title) || "Product Image"} // Added meaningful alt text
                   fill
                   className="object-contain transition duration-700 ease-in-out transform group-hover:scale-105"
                   sizes="(max-width: 640px) 48vw, (max-width: 768px) 44vw, 22vw"
@@ -115,7 +118,11 @@ const ProductCard = ({ product, attributes }) => {
                   fill
                   className="object-contain transition duration-700 ease-in-out transform group-hover:scale-105"
                   sizes="(max-width: 640px) 48vw, (max-width: 768px) 44vw, 22vw"
-                  alt={`Placeholder image for ${showingTranslateValue(product?.title)}` || 'Product placeholder image'} // Added meaningful alt text
+                  alt={
+                    `Placeholder image for ${showingTranslateValue(
+                      product?.title
+                    )}` || "Product placeholder image"
+                  } // Added meaningful alt text
                 />
               </div>
             )}
@@ -192,7 +199,9 @@ const ProductCard = ({ product, attributes }) => {
           {/* share button */}
           <div
             className={`absolute transition-transform ease-in-out shadow-lg shadow-gray-400/35 bg-gray-100 p-1 rounded-3xl ${
-              isToolTipVisible ? "flex -translate-y-16 sm:-translate-y-20" : "hidden"
+              isToolTipVisible
+                ? "flex -translate-y-16 sm:-translate-y-20"
+                : "hidden"
             }`}
           >
             <div className="tooltip-container flex items-center justify-center gap-1">
