@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoAdd, IoBagAddSharp, IoRemove } from "react-icons/io5";
 import { useCart } from "react-use-cart";
 import { useRouter } from "next/router";
