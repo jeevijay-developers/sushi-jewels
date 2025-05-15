@@ -41,7 +41,7 @@ const Category = () => {
           <h2 className="font-semibold font-serif text-lg m-0 text-heading flex items-center">
             <Link href="/" className="mr-6 h-full">
               <img
-                src="/logo/logo.png"
+                src="/logo/gray-logo.jpeg"
                 alt="logo"
                 width={50}
                 height={30}
