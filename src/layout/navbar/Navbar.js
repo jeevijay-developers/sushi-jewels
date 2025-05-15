@@ -95,7 +95,7 @@ const Navbar = () => {
                 >
                   <FiBell className="w-6 h-6" />
                 </button>
-                <button
+                {/* <button
                   aria-label="Total"
                   onClick={toggleCartDrawer}
                   className="relative text-black text-2xl font-bold"
@@ -104,8 +104,8 @@ const Navbar = () => {
                     {totalItems}
                   </span>
                   <FiShoppingCart className="w-6 h-6 " />
-                </button>
-                <button
+                </button> */}
+                {/* <button
                   className="text-black text-2xl hover:cursor-pointer font-bold hidden lg:block"
                   aria-label="Login"
                 >
@@ -134,7 +134,7 @@ const Navbar = () => {
                       <FaRegUser className="w-6 h-6 " />
                     </Link>
                   )}
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
