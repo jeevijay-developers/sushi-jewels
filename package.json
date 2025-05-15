@@ -29,7 +29,7 @@
     "@tanstack/react-query": "^5.64.2",
     "@tawk.to/tawk-messenger-react": "^2.0.2",
     "aos": "^3.0.0-beta.6",
-    "axios": "^1.4.0",
+    "axios": "^1.9.0",
     "browser-image-compression": "^2.0.2",
     "currency-symbol-map": "^5.0.1",
     "dayjs": "^1.10.7",
