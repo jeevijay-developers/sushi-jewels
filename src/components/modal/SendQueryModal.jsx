@@ -43,7 +43,7 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
   return (
     <>
       {/* Modal Overlay - using higher z-index and proper inset-0 */}
-      <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
+      <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50">
         <div className="relative bg-white p-6 rounded-md w-full max-w-md shadow-lg">
           <button
             className="absolute top-4 right-4 text-gray-500 hover:text-red-500 text-xl"
