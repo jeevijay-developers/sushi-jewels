@@ -27,7 +27,7 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
   if (!isOpen) return null;
   return (
     <>
-      <div className="fixed inset-0 z-50 bg-black/40 flex justify-center items-center">
+      <div className="fixed inset-0 bg-black/40 flex justify-center items-center">
         <div className="relative  bg-white p-6 rounded-md w-full max-w-md shadow-lg">
           <button
             className="absolute top-4 right-4 text-gray-500 hover:text-red-500 text-xl"
@@ -45,7 +45,7 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
                 Name:
               </label>
               <input
-              name="name"
+                name="name"
                 onChange={handleChage}
                 required
                 className="w-full border border-customPink rounded-md px-3 py-2 outline-customPinkDark"
@@ -56,8 +56,8 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
                 Email:
               </label>
               <input
-              name="email"
-              type="email"
+                name="email"
+                type="email"
                 onChange={handleChage}
                 required
                 className="w-full border border-customPink rounded-md px-3 py-2 outline-customPinkDark"
@@ -68,8 +68,8 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
                 Phone:
               </label>
               <input
-              name="phone"
-              type="phone"
+                name="phone"
+                type="phone"
                 onChange={handleChage}
                 required
                 className="w-full border border-customPink rounded-md px-3 py-2 outline-customPinkDark"
