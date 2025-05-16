@@ -19,16 +19,12 @@ class MyDocument extends Document {
           <link rel="icon" href={setting?.favicon || "/favicon.png"} />
           <meta
             property="og:title"
-            content={
-              setting?.meta_title || "ocentury - clothing Store "
-            }
+            content={setting?.meta_title || "sushi-jewels - jewellery Store "}
           />
           <meta property="og:type" content="eCommerce Website" />
           <meta
             property="og:description"
-            content={
-              setting?.meta_description || ""
-            }
+            content={setting?.meta_description || ""}
           />
           <meta
             name="keywords"
@@ -36,7 +32,7 @@ class MyDocument extends Document {
           />
           <meta
             property="og:url"
-            content={setting?.meta_url || "https://www.ocentury.in"}
+            content={setting?.meta_url || "https://www.sushi-jewels.in"}
           />
           <meta
             property="og:image"

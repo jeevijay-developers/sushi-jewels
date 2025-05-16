@@ -147,7 +147,7 @@ export const storeCustomization = {
     },
     latest_discount_product_limit: 18,
     daily_need_title: {
-      en: "Get Your Daily Needs From Our ocentury Store",
+      en: "Get Your Daily Needs From Our sushi-jewels Store",
       de: "Holen Sie sich Ihren täglichen Bedarf in Ihrem CloudCleaver-Shop",
     },
     daily_need_description: {
@@ -172,24 +172,15 @@ export const storeCustomization = {
     content_right_status: true,
     content_middle_status: true,
     founder_status: true,
-    header_bg:
-      "/slider/slider-1.jpg",
-    content_right_img:
-      "/slider/slider-1.jpg",
-    content_middle_Img:
-      "/slider/slider-1.jpg",
-    founder_one_img:
-      "/slider/slider-1.jpg",
-    founder_two_img:
-      "/slider/slider-1.jpg",
-    founder_three_img:
-      "/slider/slider-1.jpg",
-    founder_four_img:
-      "/slider/slider-1.jpg",
-    founder_five_img:
-      "/slider/slider-1.jpg",
-    founder_six_img:
-     "/slider/slider-1.jpg",
+    header_bg: "/slider/slider-1.jpg",
+    content_right_img: "/slider/slider-1.jpg",
+    content_middle_Img: "/slider/slider-1.jpg",
+    founder_one_img: "/slider/slider-1.jpg",
+    founder_two_img: "/slider/slider-1.jpg",
+    founder_three_img: "/slider/slider-1.jpg",
+    founder_four_img: "/slider/slider-1.jpg",
+    founder_five_img: "/slider/slider-1.jpg",
+    founder_six_img: "/slider/slider-1.jpg",
     title: {
       en: "About Us",
       de: "Über uns",
@@ -298,10 +289,8 @@ export const storeCustomization = {
     address_box_status: true,
     left_col_status: true,
     form_status: true,
-    header_bg:
-      "/slider/slider-1.jpg",
-    left_col_img:
-      "/slider/slider-1.jpg",
+    header_bg: "/slider/slider-1.jpg",
+    left_col_img: "/slider/slider-1.jpg",
     title: {
       en: "Contact Us",
       de: "Kontaktiere uns",
@@ -357,8 +346,7 @@ export const storeCustomization = {
   },
   offers: {
     header_status: true,
-    header_bg:
-      "/slider/slider-1.jpg",
+    header_bg: "/slider/slider-1.jpg",
     title: {
       en: "Mega Offer",
       de: "Mega Angebot",
@@ -367,8 +355,7 @@ export const storeCustomization = {
   },
   privacy_policy: {
     status: true,
-    header_bg:
-      "/slider/slider-1.jpg",
+    header_bg: "/slider/slider-1.jpg",
     title: {
       en: "Privacy Policy",
       de: "Datenschutz-Bestimmungen",
@@ -379,8 +366,7 @@ export const storeCustomization = {
   },
   term_and_condition: {
     status: true,
-    header_bg:
-      "/slider/slider-1.jpg",
+    header_bg: "/slider/slider-1.jpg",
     title: {
       en: "Terms & Conditions",
       de: "Terms & Bedingungen",
@@ -470,8 +456,7 @@ export const storeCustomization = {
     left_right_arrow: false,
     bottom_dots: true,
     both_slider: false,
-    first_img:
-      "/slider/slider-1.jpg",
+    first_img: "/slider/slider-1.jpg",
     first_title: {
       en: "",
       de: "",
@@ -485,8 +470,7 @@ export const storeCustomization = {
       de: "Jetzt einkaufen",
     },
     first_link: "/search?category=milk-dairy",
-    second_img:
-      "/slider/slider-1.jpg",
+    second_img: "/slider/slider-1.jpg",
     second_title: {
       en: "",
       de: "",
@@ -500,8 +484,7 @@ export const storeCustomization = {
       de: "Jetzt einkaufen",
     },
     second_link: "/search?category=fish-meat",
-    third_img:
-      "/slider/slider-1.jpg",
+    third_img: "/slider/slider-1.jpg",
     third_title: {
       en: "",
       de: "Qualitätsfrische garantiert!",
@@ -529,8 +512,7 @@ export const storeCustomization = {
       de: "Jetzt einkaufen",
     },
     four_link: "/search?category=fruits-vegetable",
-    five_img:
-      "/slider/slider-1.jpg",
+    five_img: "/slider/slider-1.jpg",
     five_title: {
       en: "Best Different Type of Grocery Store",
       de: "Bestes anderes Lebensmittelgeschäft",
@@ -594,7 +576,7 @@ export const storeCustomization = {
       en: "Shipping Cost",
       de: "Versandkosten",
     },
-    landmark:{
+    landmark: {
       en: "Landmark",
       de: "Landmark",
     },
@@ -879,7 +861,7 @@ export const storeCustomization = {
   seo: {
     favicon:
       "https://res.cloudinary.com/ahossain/image/upload/v1700903173/undefined/favicon.png",
-    meta_description: "Clothing Store",
+    meta_description: "jewellery Store",
     meta_img:
       "https://res.cloudinary.com/ahossain/image/upload/v1636729752/facebook-page_j7alju.png",
     meta_keywords: "e-commerce, online store",

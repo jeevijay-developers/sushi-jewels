@@ -443,7 +443,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-customPink"
           >
-            ocentury
+            sushi-jewels
           </Link>
           , All rights reserved.
         </p>
