@@ -33,8 +33,11 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import ProductModal from "@components/modal/ProductModal";
 import ImageWithFallback from "@components/common/ImageWithFallBack";
 import { handleLogEvent } from "src/lib/analytics";
+import SendQueryModal from "@components/modal/SendQueryModal";
 
 const ProductCard = ({ product, attributes }) => {
+  const [queryModalOpen, setQueryModalOpen] = useState(false);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [isToolTipVisible, setIsToolTipVisible] = useState(false);
   const { items, addItem, updateItemQuantity, inCart } = useCart();
@@ -220,7 +223,7 @@ const ProductCard = ({ product, attributes }) => {
           {/* send Query button */}
           <button
             className="bg-customPinkDark w-full my-2 hover:bg-customPink text-white items-center font-bold py-2 px-4 rounded"
-            onClick={() => console.log("Send Query button clicked")}
+            onClick={() => setQueryModalOpen(true)}
           >
             Send Query
           </button>
@@ -277,6 +280,13 @@ const ProductCard = ({ product, attributes }) => {
           </div>
         </div>
       </div>
+      { queryModalOpen && (
+        <SendQueryModal
+        isOpen={queryModalOpen}
+        onClose={()=> setQueryModalOpen(false)}
+        product = {product}
+        />
+      )}
     </>
   );
 };
