@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { IoClose } from "react-icons/io5";
 
@@ -11,7 +11,19 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
     message: "",
     product: product?.title?.en || "",
   });
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
+    // Cleanup when modal unmounts
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+  
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
