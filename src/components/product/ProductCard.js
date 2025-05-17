@@ -33,7 +33,7 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import ProductModal from "@components/modal/ProductModal";
 import ImageWithFallback from "@components/common/ImageWithFallBack";
 import { handleLogEvent } from "src/lib/analytics";
-import SendQueryModal from "@components/modal/SendQueryModal";
+import ProductQuery from "@components/ProductQuery/ProductQuery";
 
 const ProductCard = ({ product, attributes }) => {
   const [queryModalOpen, setQueryModalOpen] = useState(false);
@@ -222,8 +222,9 @@ const ProductCard = ({ product, attributes }) => {
 
           {/* send Query button */}
           <button
-            className="bg-customPinkDark w-full my-2 hover:bg-customPink text-white items-center font-bold py-2 px-4 rounded"
-            onClick={() => setQueryModalOpen(true)}
+            className="bg-customPinkDark w-full my-2 hover:bg-customPink text-white items-center font-bold py-2 px-4 rounded" 
+            // onClick={() => setQueryModalOpen(true)}
+            onClick={ () =>router.push(`/product-query/${product.slug}`) }
           >
             Send Query
           </button>
@@ -280,13 +281,13 @@ const ProductCard = ({ product, attributes }) => {
           </div>
         </div>
       </div>
-      { queryModalOpen && (
+      {/* { queryModalOpen && (
         <SendQueryModal
         isOpen={queryModalOpen}
         onClose={()=> setQueryModalOpen(false)}
         product = {product}
         />
-      )}
+      )} */}
     </>
   );
 };
