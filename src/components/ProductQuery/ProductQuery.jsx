@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import QueryServices from "@services/QueryServices";
+import { useRouter } from "next/router";
 
 const ProductQuery = ({ product }) => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const ProductQuery = ({ product }) => {
     message: "",
     product: product || "",
   });
-
+  const router = useRouter();
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -23,7 +24,10 @@ const ProductQuery = ({ product }) => {
     e.preventDefault();
 
     QueryServices.submitProductQueryForm(formData)
-      .then(() => toast.success("Query submitted successfully!"))
+      .then(() => {
+        toast.success("Query submitted successfully!");
+        router.push("/");
+      })
       .catch((error) => {
         toast.error("Error submitting query!");
         console.error(error);
