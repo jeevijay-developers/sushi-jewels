@@ -283,7 +283,6 @@ const ProductCard = ({ product, attributes }) => {
       { queryModalOpen && (
         <SendQueryModal
         isOpen={queryModalOpen}
-        className='z-50'
         onClose={()=> setQueryModalOpen(false)}
         product = {product}
         />
