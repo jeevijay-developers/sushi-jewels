@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { IoClose } from "react-icons/io5";
+import QueryServices from "@services/QueryServices";
 
 const SendQueryModal = ({ isOpen, onClose, product }) => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-  
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -35,6 +36,13 @@ const SendQueryModal = ({ isOpen, onClose, product }) => {
     e.preventDefault();
     console.log(formData);
     // toast.success("Query submitted successfully!");
+    QueryServices.submitProductQueryForm(formData)
+      .then(toast.success("Query submitted successfully!"))
+      .catch((error) => {
+        toast.error("Error submitting query!");
+        console.log(error);
+      });
+
     onClose();
   };
 
