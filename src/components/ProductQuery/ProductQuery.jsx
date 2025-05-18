@@ -11,6 +11,13 @@ import CMSkeleton from "@components/preloader/CMSkeleton";
 import PageHeader from "@components/header/PageHeader";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import QueryServices from "@services/QueryServices";
+import {
+  FiUser,
+  FiMail,
+  FiPhone,
+  FiMessageSquare,
+  FiPackage,
+} from "react-icons/fi";
 
 const ProductQuery = ({ product }) => {
   const [formData, setFormData] = useState({
@@ -82,61 +89,112 @@ const ProductQuery = ({ product }) => {
           {/* Luxurious form container */}
           <div className="p-8 lg:p-10">
             <form onSubmit={handleSubmit} className="space-y-8">
-              {["name", "email", "phone"].map((field) => (
-                <div key={field} className="relative">
-                  <label className="block text-sm font-medium text-customPink mb-2 uppercase tracking-wider">
-                    {field}
-                  </label>
+              {/* Name Field */}
+              <div className="relative">
+                <label className="block text-sm font-medium text-customPink mb-2 uppercase tracking-wider">
+                  Name
+                </label>
+                <div className="relative flex items-center">
+                  <div className="absolute left-3 text-customPink opacity-70">
+                    <FiUser size={18} />
+                  </div>
                   <input
-                    name={field}
-                    type={
-                      field === "email"
-                        ? "email"
-                        : field === "phone"
-                        ? "tel"
-                        : "text"
-                    }
-                    value={formData[field]}
+                    name="name"
+                    type="text"
+                    value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full border-2 border-purple-200 focus:border-yellow-500 rounded-md px-4 py-3 outline-none transition-all duration-300 bg-white bg-opacity-80 shadow-sm"
-                    placeholder={`Enter your ${field}...`}
+                    className="w-full border-2 border-purple-200 focus:border-yellow-500 rounded-md pl-10 pr-4 py-3 outline-none transition-all duration-300 bg-white bg-opacity-80 shadow-sm"
+                    placeholder="Enter your name..."
                   />
-                  <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-yellow-400 to-purple-500 transition-all duration-300 group-focus-within:w-full"></div>
                 </div>
-              ))}
+              </div>
 
+              {/* Email Field */}
+              <div className="relative">
+                <label className="block text-sm font-medium text-customPink mb-2 uppercase tracking-wider">
+                  Email
+                </label>
+                <div className="relative flex items-center">
+                  <div className="absolute left-3 text-customPink opacity-70">
+                    <FiMail size={18} />
+                  </div>
+                  <input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full border-2 border-purple-200 focus:border-yellow-500 rounded-md pl-10 pr-4 py-3 outline-none transition-all duration-300 bg-white bg-opacity-80 shadow-sm"
+                    placeholder="Enter your email..."
+                  />
+                </div>
+              </div>
+
+              {/* Phone Field */}
+              <div className="relative">
+                <label className="block text-sm font-medium text-customPink mb-2 uppercase tracking-wider">
+                  Phone
+                </label>
+                <div className="relative flex items-center">
+                  <div className="absolute left-3 text-customPink opacity-70">
+                    <FiPhone size={18} />
+                  </div>
+                  <input
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full border-2 border-purple-200 focus:border-yellow-500 rounded-md pl-10 pr-4 py-3 outline-none transition-all duration-300 bg-white bg-opacity-80 shadow-sm"
+                    placeholder="Enter your phone..."
+                  />
+                </div>
+              </div>
+
+              {/* Product Field */}
               <div className="relative">
                 <label className="block text-sm font-medium text-purple-400 mb-2 uppercase tracking-wider">
                   Product
                 </label>
-                <input
-                  name="product"
-                  type="text"
-                  value={formData.product}
-                  readOnly
-                  className="w-full border-2 border-purple-200 rounded-md px-4 py-3 bg-purple-50 text-customPink font-medium"
-                />
+                <div className="relative flex items-center">
+                  <div className="absolute left-3 text-customPink opacity-70">
+                    <FiPackage size={18} />
+                  </div>
+                  <input
+                    name="product"
+                    type="text"
+                    value={formData.product}
+                    readOnly
+                    className="w-full border-2 border-purple-200 rounded-md pl-10 pr-4 py-3 bg-purple-50 text-customPink font-medium"
+                  />
+                </div>
               </div>
 
+              {/* Message Field */}
               <div className="relative">
                 <label className="block text-sm font-medium text-customPink mb-2 uppercase tracking-wider">
                   Message
                 </label>
-                <textarea
-                  name="message"
-                  rows="5"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="w-full border-2 border-purple-200 focus:border-yellow-500 rounded-md px-4 py-3 outline-none transition-all duration-300"
-                  placeholder="Please share your questions or requirements..."
-                />
+                <div className="relative">
+                  <div className="absolute left-3 top-3 text-customPink opacity-70">
+                    <FiMessageSquare size={18} />
+                  </div>
+                  <textarea
+                    name="message"
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full border-2 border-purple-200 focus:border-yellow-500 rounded-md pl-10 pr-4 py-3 outline-none transition-all duration-300"
+                    placeholder="Please share your questions or requirements..."
+                  />
+                </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-gray-200 font-bold py-3 px-6 rounded-md transition duration-300 shadow-md hover:shadow-lg flex items-center justify-center group"
+                className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 shadow-md hover:shadow-lg flex items-center justify-center group"
               >
                 <span>Submit Inquiry</span>
                 <svg
