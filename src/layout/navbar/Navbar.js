@@ -11,8 +11,8 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import useTranslation from "next-translate/useTranslation";
 import { FaRegUser } from "react-icons/fa";
-import "@blueprintjs/core/lib/css/blueprint.css";
-import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+// import "@blueprintjs/core/lib/css/blueprint.css";
+// import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 //internal import
 import { getUserSession } from "@lib/auth";
@@ -86,8 +86,32 @@ const Navbar = () => {
                 />
               </div>
               <div className="lg:w-[70%] w-[50%] ">
-                <NavbarSearch modifier="bp5-large bp6-round" />
+                <div className="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
+                  <div className="flex flex-col mx-auto w-full">
+                    <form
+                      onSubmit={handleSubmit}
+                      className="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full"
+                    >
+                      <label className="flex items-center py-0.5">
+                        <input
+                          onChange={(e) => setSearchText(e.target.value)}
+                          value={searchText}
+                          className="form-input w-full pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
+                          placeholder={t("search-placeholder")}
+                        />
+                      </label>
+                      <button
+                        aria-label="Search"
+                        type="submit"
+                        className="outline-none text-xl text-gray-400 absolute top-0 right-0 end-0 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out hover:text-heading focus:outline-none"
+                      >
+                        <IoSearchOutline />
+                      </button>
+                    </form>
+                  </div>
+                </div>
               </div>
+
               {/* <MobileFooter/> */}
               {/* Icons Section - Right */}
               <div className="flex items-center space-x-3 lg:space-x-10  justify-end">
@@ -146,7 +170,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center justify-center py-3 absolute z-[41] bg-transparent w-full space-x-6 hover:bg-white transition-colors duration-500 ease-in-out mx-auto">
           <Link
             href="/"
-            className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+            className=" font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
           >
             {showingTranslateValue(storeCustomizationSetting?.navbar?.home) ||
               "Home"}
