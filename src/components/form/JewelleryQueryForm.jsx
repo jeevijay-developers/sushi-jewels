@@ -52,9 +52,9 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
           onClick={() => setDisplayQueryForm(false)}
         />
       </span>
-      <h2 className="text-3xl font-bold text-pink-600 mb-6 text-center">
-        <FaGem className="inline-block text-pink-500 mr-2" />
-        Jewellery Query Form
+      <h2 className="text-3xl font-bold text-customPink mb-6 text-center">
+        <FaGem className="inline-block text-customPink mr-2" />
+        Jewellery QucustomPink
       </h2>
 
       <form onSubmit={handleSubmit}  className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -64,7 +64,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
             Full Name
           </label>
           <div className="flex items-center border border-gray-300 rounded-lg p-3">
-            <FaUser className="text-pink-500 mr-3" />
+            <FaUser className="text-customPink mr-3" />
             <input
               type="text"
               className="w-full outline-none"
@@ -98,7 +98,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
             Phone Number
           </label>
           <div className="flex items-center border border-gray-300 rounded-lg p-3">
-            <FaPhone className="text-pink-500 mr-3" />
+            <FaPhone className="text-customPink mr-3" />
             <input
               type="tel"
               className="w-full outline-none"
@@ -116,7 +116,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
             Type of Jewellery
           </label>
           <div className="flex items-center border border-gray-300 rounded-lg p-3">
-            <FaGem className="text-pink-500 mr-3" />
+            <FaGem className="text-customPink mr-3" />
             <select className="w-full outline-none bg-transparent" value={formData.jewelleryType} onChange={(e) => setFormData({ ...formData, jewelleryType: e.target.value })} required>
               <option value="">Select type</option>
               <option value="ring">Ring</option>
@@ -134,7 +134,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
             Budget (in ₹)
           </label>
           <div className="flex items-center border border-gray-300 rounded-lg p-3">
-            <FaRupeeSign className="text-pink-500 mr-3" />
+            <FaRupeeSign className="text-customPink mr-3" />
             <input
               type="number"
               className="w-full outline-none"
@@ -152,7 +152,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
             Additional Message
           </label>
           <div className="flex items-start border border-gray-300 rounded-lg p-3">
-            <FaCommentDots className="text-pink-500 mr-3 mt-1" />
+            <FaCommentDots className="text-customPink mr-3 mt-1" />
             <textarea
               rows="4"
               className="w-full outline-none resize-none"
@@ -167,7 +167,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
         <div className="md:col-span-2 flex justify-center mt-4">
           <button
             type="submit"
-            className="bg-pink-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-pink-600 transition"
+            className="bg-customPink text-white px-6 py-3 rounded-full font-semibold hover:bg-customPinkDark transition"
           >
             Submit Query
           </button>
