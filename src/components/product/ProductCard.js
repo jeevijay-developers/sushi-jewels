@@ -106,7 +106,7 @@ const ProductCard = ({ product, attributes }) => {
 
       <div
         data-aos="fade-up"
-        className="para-hover w-[48%] sm:w-[45%] md:w-[31%] lg:w-[23%] group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center relative hover:shadow-2xl"
+        className="para-hover w-[48%] sm:w-[45%] md:w-[31%] lg:w-[18%] group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center relative hover:shadow-2xl"
       >
         <div className="w-full flex justify-between">
           {/* <Stock product={product} stock={product.stock} card /> */}
@@ -121,7 +121,7 @@ const ProductCard = ({ product, attributes }) => {
           onClick={() => {
             router.push(`/product/${product.slug}`);
           }}
-          className="relative  w-full pt-[100%] cursor-pointer rounded-2xl overflow-hidden"
+          className="relative w-full pt-[100%]   md:pt-[80%] cursor-pointer rounded-2xl overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-full p-2">
             {Array.isArray(product.image) && product.image.length > 0 ? (
