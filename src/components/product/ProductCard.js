@@ -121,32 +121,36 @@ const ProductCard = ({ product, attributes }) => {
           onClick={() => {
             router.push(`/product/${product.slug}`);
           }}
-          className="relative w-full pt-[100%] cursor-pointer" // Square aspect ratio using padding-top
+          className="relative  w-full pt-[100%] cursor-pointer rounded-2xl overflow-hidden" 
         >
           <div className="absolute top-0 left-0 w-full h-full p-2">
             {Array.isArray(product.image) && product.image.length > 0 ? (
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                {" "}
+              
                 <ImageWithFallback
                   src={product.image[currentImageIndex]}
                   alt={showingTranslateValue(product?.title) || "Product Image"}
                   fill
-                  className="object-contain transition duration-700 ease-in-out transform group-hover:scale-105"
+                  className="object-contain transition duration-700 ease-in-out transform group-hover:scale-105 rounded-2xl" 
                   sizes="(max-width: 640px) 48vw, (max-width: 768px) 44vw, 22vw"
                 />
               </div>
             ) : (
-              <div className="relative w-full h-full">
-                <Image
-                  src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                  fill
-                  className="object-contain transition duration-700 ease-in-out transform group-hover:scale-105"
-                  sizes="(max-width: 640px) 48vw, (max-width: 768px) 44vw, 22vw"
-                  alt={
-                    `Placeholder image for ${showingTranslateValue(
-                      product?.title
-                    )}` || "Product placeholder image"
-                  } // Added meaningful alt text
-                />
+              <div className="relative h-1/2 w-full pt-[100%] cursor-pointer">
+                <div className="absolute top-0 left-0 w-full h-full p-2">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                    {" "}
+                    {/* Already has rounded-md and overflow-hidden */}
+                    <Image
+                      fill
+                      src={product.imageUrl}
+                      alt={product.title}
+                      className="object-cover transition duration-500 ease-in-out transform group-hover:scale-105 rounded-2xl" 
+                      sizes="100%"
+                    />
+                  </div>
+                </div>
               </div>
             )}
           </div>
