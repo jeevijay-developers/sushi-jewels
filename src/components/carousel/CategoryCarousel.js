@@ -129,9 +129,9 @@ const CategoryCarousel = () => {
                         "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
                       }
                       alt="category"
-                      width={40}
-                      height={40}
-                      className="object-fill w-full h-full rounded-2xl"
+                      width={100}
+                      height={100}
+                      className="object-cover w-full h-full rounded-2xl"
                     />
                   </div>
                 </div>
