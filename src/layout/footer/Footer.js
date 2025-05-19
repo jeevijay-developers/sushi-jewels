@@ -438,7 +438,7 @@ const Footer = () => {
         <p className="text-sm text-gray-500 leading-6">
           Copyright 2025 @{" "}
           <Link
-            href="https://themeforest.net/user/htmllover"
+            href="/privacy-policy"
             target="_blank"
             rel="noopener noreferrer"
             className="text-customPink"
