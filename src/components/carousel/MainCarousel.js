@@ -162,9 +162,9 @@ const MainCarousel = () => {
         <div>
           <div
             ref={ref}
-            className={`xl:w-[35%] bg-white mx-auto w-full lg:absolute p-9 xl:p-0 xl:overflow-hidden ${
-              isSmallScreen ? "absolute top-0" : "flex"
-            } xl:bg-transparent lg:flex-row items-center xl:right-[46px] xl:bottom-[-0px] z-10 shadow-2xl overflow-hidden`}
+            className={`xl:w-[35%] bg-white mx-auto w-full lg:absolute p-9 xl:p-0  ${
+              isSmallScreen ? "absolute top-0" : "absolute top-10"
+            } xl:bg-transparent lg:flex-row items-center xl:right-[46px]  z-10 shadow-2xl `}
           >
             <div className="xl:w-full flex justify-center items-center pt-2">
               <JewelleryQueryForm setDisplayQueryForm={setDisplayQueryForm} />

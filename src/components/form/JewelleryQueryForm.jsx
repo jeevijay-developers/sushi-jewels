@@ -54,7 +54,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
       </span>
       <h2 className="text-3xl font-bold text-customPink mb-6 text-center">
         <FaGem className="inline-block text-customPink mr-2" />
-        Jewellery QucustomPink
+        Jewellery Query Form
       </h2>
 
       <form onSubmit={handleSubmit}  className="grid grid-cols-1 md:grid-cols-2 gap-6">
