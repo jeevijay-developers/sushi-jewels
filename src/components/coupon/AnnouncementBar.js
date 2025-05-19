@@ -51,12 +51,19 @@ export default function AnnouncementBar() {
         const title = coupon.title.en || "Get";
 
         if (discountType === "percentage" && discount > 0) {
-          return `${title} ${discount}% OFF on purchase of ₹${minAmount} | Use Code ${code}`;
+          return `${title} ${discount}% OFF on purchase of ₹${minAmount}`;
         } else if (discountType === "fixed" && discount > 0) {
-          return `${title} ₹${discount} OFF on purchase of ₹${minAmount}  | Use Code ${code}`;
+          return `${title} ₹${discount} OFF on purchase of ₹${minAmount} `;
         } else {
-          return `${title} Free Shipping on orders above ₹${minAmount} | Use Code ${code}`;
+          return `${title} Free Shipping on orders above ₹${minAmount}`;
         }
+        // if (discountType === "percentage" && discount > 0) {
+        //   return `${title} ${discount}% OFF on purchase of ₹${minAmount} | Use Code ${code}`;
+        // } else if (discountType === "fixed" && discount > 0) {
+        //   return `${title} ₹${discount} OFF on purchase of ₹${minAmount}  | Use Code ${code}`;
+        // } else {
+        //   return `${title} Free Shipping on orders above ₹${minAmount} | Use Code ${code}`;
+        // }
       }) || []),
   ];
 
