@@ -152,18 +152,77 @@ const ProductCard = ({ product, attributes }) => {
           </div>
         </div>
         <div className="w-full px-2 sm:px-3 lg:px-4 pb-3 sm:pb-4 overflow-hidden">
-          <div className="relative mb-1 mt-4">
-            <span className="text-gray-400 font-medium text-xs d-block mb-1">
-              {product.unit}
-            </span>
-            <h2 className="text-heading truncate mb-0 block text-xs sm:text-sm font-medium text-gray-600 relative">
-              <span className="line-clamp-2 font-bold para-hover-target">
-                {showingTranslateValue(product?.title)}
+          <div className="flex flex-row justify-between">
+            {" "}
+            <div className="relative mb-1 mt-4">
+              <span className="text-gray-400 font-medium text-xs d-block mb-1">
+                {product.unit}
               </span>
-            </h2>
+              <h2 className="text-heading truncate mb-0 block text-xs sm:text-sm font-medium text-gray-600 relative">
+                <span className="line-clamp-2 font-bold para-hover-target">
+                  {showingTranslateValue(product?.title)}
+                </span>
+              </h2>
+            </div>
+            {/* share button */}
+            <div>
+              {" "}
+              <div
+                className={`absolute transition-transform ease-in-out shadow-lg shadow-gray-400/35 bg-gray-100 p-1 rounded-3xl ${
+                  isToolTipVisible
+                    ? "flex -translate-y-16 sm:-translate-y-20 -translate-x-20 sm:-translate-x-28 "
+                    : "hidden"
+                }`}
+              >
+                <div className="tooltip-container flex items-center justify-center gap-1">
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center shadow-gray-200 rounded-full hover:bg-green-500 hover:text-gray-50">
+                    <WhatsappShareButton
+                      url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
+                      quote=""
+                    >
+                      <WhatsappIcon size={24} round />
+                    </WhatsappShareButton>
+                  </div>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-50 shadow-md shadow-gray-200 rounded-full hover:bg-sky-500 hover:text-gray-50">
+                    <FacebookShareButton
+                      url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
+                      quote=""
+                    >
+                      <FacebookIcon size={24} round />
+                    </FacebookShareButton>
+                  </div>
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center  bg-gray-50 rounded-full shadow-md shadow-gray-200 hover:bg-gray-700 hover:text-gray-50">
+                    <TwitterShareButton
+                      url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
+                      quote=""
+                    >
+                      <XIcon size={24} round />
+                    </TwitterShareButton>
+                  </div>
+                </div>
+                <div className="absolute left-0 w-full bg-transparent z-50 h-4 -bottom-4" />
+                <div className="absolute -bottom-2 left-[45%] h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-gray-100" />
+              </div>
+              <div
+                className={`relative border-4 border-gray-50 bg-gradient-to-r from-customPink to-customPink p-2 rounded-full transition-all duration-300 ease-in-out shadow-gray-300/50 shadow-xl hover:cursor-pointer w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center ${
+                  isToolTipVisible
+                    ? "scale-110 -translate-y-1 from-violet-800 to-indigo-800"
+                    : ""
+                }`}
+                onClick={toggleToolTip}
+              >
+                <FaShareAlt
+                  className={`text-gray-100 dark:text-white text-sm sm:text-base transition-transform duration-300 hover:rotate-180 ${
+                    isToolTipVisible ? "rotate-180" : ""
+                  }`}
+                />
+              </div>
+            </div>
           </div>
+
           {/* //^ Price section */}
-          <div className="flex justify-between items-center text-heading text-xs sm:text-sm md:text-base lg:text-xl para-hover-target">
+          <div className="flex justify-between items-center text-heading text-xs sm:text-sm md:text-base lg:text-xl ">
+            {/* <div className="flex justify-between items-center text-heading text-xs sm:text-sm md:text-base lg:text-xl para-hover-target"> */}
             <Price
               card
               product={product}
@@ -222,63 +281,12 @@ const ProductCard = ({ product, attributes }) => {
 
           {/* send Query button */}
           <button
-            className="bg-customPinkDark w-full my-2 hover:bg-customPink text-white items-center font-bold py-2 px-4 rounded" 
+            className="bg-customPinkDark w-full my-2 hover:bg-customPink text-white items-center font-bold py-2 px-4 rounded"
             // onClick={() => setQueryModalOpen(true)}
-            onClick={ () =>router.push(`/product-query/${product.slug}`) }
+            onClick={() => router.push(`/product-query/${product.slug}`)}
           >
             Send Query
           </button>
-          {/* share button */}
-          <div
-            className={`absolute transition-transform ease-in-out shadow-lg shadow-gray-400/35 bg-gray-100 p-1 rounded-3xl ${
-              isToolTipVisible
-                ? "flex -translate-y-16 sm:-translate-y-20"
-                : "hidden"
-            }`}
-          >
-            <div className="tooltip-container flex items-center justify-center gap-1">
-              <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center shadow-gray-200 rounded-full hover:bg-green-500 hover:text-gray-50">
-                <WhatsappShareButton
-                  url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
-                  quote=""
-                >
-                  <WhatsappIcon size={24} round />
-                </WhatsappShareButton>
-              </div>
-              <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-50 shadow-md shadow-gray-200 rounded-full hover:bg-sky-500 hover:text-gray-50">
-                <FacebookShareButton
-                  url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
-                  quote=""
-                >
-                  <FacebookIcon size={24} round />
-                </FacebookShareButton>
-              </div>
-              <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center  bg-gray-50 rounded-full shadow-md shadow-gray-200 hover:bg-gray-700 hover:text-gray-50">
-                <TwitterShareButton
-                  url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
-                  quote=""
-                >
-                  <XIcon size={24} round />
-                </TwitterShareButton>
-              </div>
-            </div>
-            <div className="absolute left-0 w-full bg-transparent z-50 h-4 -bottom-4" />
-            <div className="absolute -bottom-2 left-[45%] h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-gray-100" />
-          </div>
-          <div
-            className={`relative border-4 border-gray-50 bg-gradient-to-r from-customPink to-customPink p-2 rounded-full transition-all duration-300 ease-in-out shadow-gray-300/50 shadow-xl hover:cursor-pointer w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center ${
-              isToolTipVisible
-                ? "scale-110 -translate-y-1 from-violet-800 to-indigo-800"
-                : ""
-            }`}
-            onClick={toggleToolTip}
-          >
-            <FaShareAlt
-              className={`text-gray-100 dark:text-white text-sm sm:text-base transition-transform duration-300 hover:rotate-180 ${
-                isToolTipVisible ? "rotate-180" : ""
-              }`}
-            />
-          </div>
         </div>
       </div>
       {/* { queryModalOpen && (
