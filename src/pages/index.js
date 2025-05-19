@@ -127,10 +127,9 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* popular products */}
             {storeCustomizationSetting?.home?.popular_products_status && (
               <div className=" bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10 sticky">
-                <div className="mb-10 flex ">
-                  <div className=" w-full lg:w-2/5">
-                    <h2 className="font-[lora] font-thin text-[2rem] ml-4 md:ml-8 lg:ml-12 lg:text-[3.25rem] mb-2">
-                      Bestseller
+                <div className="mb-10  ">
+                  <div className=" w-full ">
+                    <h2 className="font-[lora] font-thin text-center text-[2rem]   lg:text-[3.25rem] mb-2">
                       <CMSkeleton
                         count={1}
                         height={30}

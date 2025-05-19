@@ -110,8 +110,8 @@ export const storeCustomization = {
     },
     feature_product_limit: 18,
     popular_title: {
-      en: "Popular Products for Daily Shopping",
-      de: "Beliebte Produkte für den täglichen Einkauf",
+      en: "Popular Products ",
+      de: "Beliebte Produkte ",
     },
     popular_description: {
       en: "See all our popular products in this week. You can choose your daily needs products from this list and get some special offer with free shipping.",
