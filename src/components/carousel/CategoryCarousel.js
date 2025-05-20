@@ -33,7 +33,7 @@ const CategoryCarousel = () => {
     queryKey: ["category"],
     queryFn: async () => await CategoryServices.getShowingCategory(),
   });
-
+// console.log("category data",data);
   const handleCategoryClick = (id, category) => {
     const category_name = showingTranslateValue(category)
       ?.toLowerCase()
