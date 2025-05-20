@@ -64,10 +64,8 @@ const MainCarousel = () => {
   useEffect(() => {
     const handleWindowResize = () => {
       if (window.innerWidth < 1280) {
-        setDisplayQueryForm(false);
         setIsSmallScreen(true);
       } else {
-        setDisplayQueryForm(true);
         setIsSmallScreen(false);
         if (ref.current) {
           ref.current.style.right = "46px";
@@ -81,7 +79,29 @@ const MainCarousel = () => {
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, [ref]);
+  }, []);
+  
+  // useEffect(() => {
+  //   const handleWindowResize = () => {
+  //     if (window.innerWidth < 1280) {
+  //       setDisplayQueryForm(false);
+  //       setIsSmallScreen(true);
+  //     } else {
+  //       setDisplayQueryForm(true);
+  //       setIsSmallScreen(false);
+  //       if (ref.current) {
+  //         ref.current.style.right = "46px";
+  //         ref.current.style.bottom = "0px";
+  //       }
+  //     }
+  //   };
+
+  //   handleWindowResize();
+  //   window.addEventListener("resize", handleWindowResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleWindowResize);
+  //   };
+  // }, [ref]);
 
   return (
     <div className="relative">
