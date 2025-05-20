@@ -19,7 +19,7 @@ const MainCarousel = () => {
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue, showingUrl, showingImage } =
     useUtilsFunction();
-  const [displayQueryForm, setDisplayQueryForm] = React.useState(false);
+  const [displayQueryForm, setDisplayQueryForm] = React.useState(true);
   const [isSmallScreen, setIsSmallScreen] = React.useState(false);
 
   const sliderData = [
@@ -62,23 +62,17 @@ const MainCarousel = () => {
 
   const ref = useRef(null);
   useEffect(() => {
-    const handleWindowResize = () => {
-      if (window.innerWidth < 1280) {
-        setIsSmallScreen(true);
-      } else {
-        setIsSmallScreen(false);
-        if (ref.current) {
-          ref.current.style.right = "46px";
-          ref.current.style.bottom = "0px";
-        }
+    const isSmall = window.innerWidth < 1280;
+    setIsSmallScreen(isSmall);
+    if (isSmall) {
+      setDisplayQueryForm(false);
+    } else {
+      setDisplayQueryForm(true);
+      if (ref.current) {
+        ref.current.style.right = "46px";
+        ref.current.style.bottom = "0px";
       }
-    };
-
-    handleWindowResize();
-    window.addEventListener("resize", handleWindowResize);
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
+    }
   }, []);
   
   // useEffect(() => {
