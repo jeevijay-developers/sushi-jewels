@@ -44,32 +44,32 @@ export const priceRanges = [
 export const categories = [
   {
     label: "Mother",
-    imageUrl: "https://placehold.co/150x150/FF69B4/FFFFFF?text=Mother",
+    imageUrl: "/GiftingGuide/1.jpeg",
     link: "/search?category=mother&_id=682b0b25e3079a080ce1f722",
   },
   {
     label: "Wife",
-    imageUrl: "https://placehold.co/150x150/FF69B4/FFFFFF?text=Wife",
+    imageUrl: "/GiftingGuide/2.jpeg",
     link: "/search?category=wife&_id=682b0b69e3079a080ce1f72f",
   },
   {
     label: "New Mom",
-    imageUrl: "https://placehold.co/150x150/FF69B4/FFFFFF?text=New+Mom",
+    imageUrl: "/GiftingGuide/3.jpeg",
     link: "/search?category=new-mom&_id=682b0b8fe3079a080ce1f735",
   },
   {
     label: "Husband",
-    imageUrl: "https://placehold.co/150x150/FF69B4/FFFFFF?text=Husband",
+    imageUrl: "/GiftingGuide/4.jpeg",
     link: "/search?category=husband&_id=682b0cbfe3079a080ce1f73b",
   },
   {
     label: "Friends",
-    imageUrl: "https://placehold.co/150x150/FF69B4/FFFFFF?text=Friends",
+    imageUrl: "/GiftingGuide/5.jpeg",
     link: "/search?category=friends&_id=682b108be3079a080ce1f7ca",
   },
   {
     label: "Brother",
-    imageUrl: "https://placehold.co/150x150/FF69B4/FFFFFF?text=Brother",
+    imageUrl: "/GiftingGuide/6.jpeg",
     link: "/search?category=brother&_id=682b10c3e3079a080ce1f7d1",
   },
 ];

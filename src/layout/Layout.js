@@ -9,6 +9,7 @@ import FooterTop from "@layout/footer/FooterTop";
 import MobileFooter from "@layout/footer/MobileFooter";
 import FeatureCard from "@components/feature-card/FeatureCard";
 import AnnouncementBar from "@components/coupon/AnnouncementBar";
+import WhatsAppFloatingButton from "@components/WhatsAppFloatingButton/WhatsAppFloatingButton";
 
 const Layout = ({ title, description, children }) => {
   return (
@@ -23,6 +24,7 @@ const Layout = ({ title, description, children }) => {
         </Head>
         <AnnouncementBar />
         <Navbar />
+        <WhatsAppFloatingButton/>
         <div className="bg-gray-50">{children}</div>
         {/* <MobileFooter /> */}
         <div className="w-full">
