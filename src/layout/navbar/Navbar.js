@@ -80,7 +80,7 @@ const Navbar = () => {
                   width={80}
                   height={80}
                   className=" "
-                  priority
+                  
                   src="/logo/WhatsApp Image 2025-05-10 at 4.49.19 PM.jpeg"
                   alt="logo"
                 />
