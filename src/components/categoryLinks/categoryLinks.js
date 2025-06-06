@@ -34,7 +34,7 @@ export const priceRanges = [
   },
   {
     label: "The Luxe Edit",
-    price: "Signature Pieces",
+    price: "Premium Collection",
     gradient: "bg-gradient-to-br from-[#FFF3C2] via-[#F5D88D] to-[#D4AF37]",
     premium: true,
     link: "/search?collection=the-luxe-edit&_id=682b0ae9e3079a080ce1f71b",

@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
 import JewelleryImages from "./JewelleryImages";
+import { useRouter } from "next/router";
 
 const JewelleryGallery = () => {
+  const router = useRouter();
   return (
     <div
       data-aos="fade-right"
@@ -20,7 +23,10 @@ const JewelleryGallery = () => {
           Discover our latest range of handcrafted jewellery, designed to
           elevate your every look.
         </p>
-        <button className="bg-customPink text-white px-6 sm:px-8 py-3 rounded-md text-sm font-semibold hover:bg-customPinkDark transition">
+        <button
+          className="bg-customPink text-white px-6 sm:px-8 py-3 rounded-md text-sm font-semibold hover:bg-customPinkDark transition"
+          onClick={() => router.push("http://localhost:3000/search?category")}
+        >
           EXPLORE NOW
         </button>
       </div>

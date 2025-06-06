@@ -203,7 +203,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* Classic Plain Shirt */}
             <div>
               <h1 className="px-6 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center">
-                Shop by Recipient
+                Personal Style Picks
               </h1>
               <ClassicShirtCard />
             </div>

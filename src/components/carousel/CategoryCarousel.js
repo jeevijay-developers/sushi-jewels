@@ -28,8 +28,21 @@ const CategoryCarousel = () => {
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
 
-  const [isNavigationReady, setIsNavigationReady] = useState(false);
   const [imageErrors, setImageErrors] = useState(new Set());
+  const [swiperInstance, setSwiperInstance] = useState(null);
+
+  // Manual navigation handlers
+  const handlePrevClick = useCallback(() => {
+    if (swiperInstance) {
+      swiperInstance.slidePrev();
+    }
+  }, [swiperInstance]);
+
+  const handleNextClick = useCallback(() => {
+    if (swiperInstance) {
+      swiperInstance.slideNext();
+    }
+  }, [swiperInstance]);
 
   const { showingTranslateValue } = useUtilsFunction();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
@@ -45,30 +58,22 @@ const CategoryCarousel = () => {
     retry: 3,
   });
 
-  // Initialize navigation when swiper is ready
+  // Initialize navigation after swiper is ready
   useEffect(() => {
-    if (swiperRef.current?.swiper && !isNavigationReady) {
-      const swiper = swiperRef.current.swiper;
-
-      // Ensure navigation is available and params exist
-      if (swiper.navigation && prevRef.current && nextRef.current) {
-        // Initialize navigation params if they don't exist
-        if (!swiper.params.navigation) {
-          swiper.params.navigation = {};
+    if (swiperInstance && prevRef.current && nextRef.current) {
+      // Force navigation initialization with safety checks
+      try {
+        if (swiperInstance.navigation) {
+          swiperInstance.params.navigation.prevEl = prevRef.current;
+          swiperInstance.params.navigation.nextEl = nextRef.current;
+          swiperInstance.navigation.init();
+          swiperInstance.navigation.update();
         }
-
-        // Set navigation elements
-        swiper.params.navigation.prevEl = prevRef.current;
-        swiper.params.navigation.nextEl = nextRef.current;
-
-        // Initialize and update navigation
-        swiper.navigation.init();
-        swiper.navigation.update();
-
-        setIsNavigationReady(true);
+      } catch (error) {
+        console.warn('Navigation initialization failed:', error);
       }
     }
-  }, [categories, isNavigationReady]);
+  }, [swiperInstance]);
 
   // Handle category click with proper error handling
   const handleCategoryClick = useCallback(
@@ -94,17 +99,17 @@ const CategoryCarousel = () => {
     setImageErrors((prev) => new Set([...prev, categoryId]));
   }, []);
 
-  // Get responsive breakpoints
+  // Get responsive breakpoints - Reduced slidesPerView for desktop to ensure scrolling
   const getBreakpoints = () => ({
     320: { slidesPerView: 2, spaceBetween: 10 },
     375: { slidesPerView: 3, spaceBetween: 8 },
     414: { slidesPerView: 4, spaceBetween: 8 },
     660: { slidesPerView: 5, spaceBetween: 8 },
     768: { slidesPerView: 6, spaceBetween: 8 },
-    991: { slidesPerView: 8, spaceBetween: 10 },
-    1140: { slidesPerView: 9, spaceBetween: 12 },
-    1680: { slidesPerView: 10, spaceBetween: 12 },
-    1920: { slidesPerView: 12, spaceBetween: 15 },
+    991: { slidesPerView: 6, spaceBetween: 10 }, // Reduced from 8
+    1140: { slidesPerView: 7, spaceBetween: 12 }, // Reduced from 9
+    1680: { slidesPerView: 8, spaceBetween: 12 }, // Reduced from 10
+    1920: { slidesPerView: 9, spaceBetween: 15 }, // Reduced from 12
   });
 
   // Loading state
@@ -127,8 +132,13 @@ const CategoryCarousel = () => {
     );
   }
 
+  // Get the correct data structure
+  const categoryData = categories?.[0]?.children || [];
+  
+  console.log("Category data:", categoryData); // Debug log
+  console.log("Number of categories:", categoryData.length); // Debug log
+
   // No data state
-  const categoryData = categories?.[0]?.children;
   if (!categoryData?.length) {
     return (
       <div className="my-10 flex justify-center">
@@ -137,54 +147,67 @@ const CategoryCarousel = () => {
     );
   }
 
-  const hasMultipleSlides = categoryData.length > 3;
-
   return (
     <div className="relative my-10 px-2 sm:px-4">
       <Swiper
         ref={swiperRef}
-        onSwiper={(swiper) => {
-          // Delay initialization to ensure DOM is ready
-          setTimeout(() => {
-            if (prevRef.current && nextRef.current && swiper.navigation) {
-              // Ensure navigation params exist
-              if (!swiper.params.navigation) {
-                swiper.params.navigation = {};
-              }
-
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-              setIsNavigationReady(true);
-            }
-          }, 100);
-        }}
         modules={[Autoplay, Navigation]}
         spaceBetween={8}
-        slidesPerView="auto"
+        slidesPerView={2} // Default for small screens
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
-          enabled: true,
+          enabled: true, // Always enabled
         }}
-        autoplay={
-          hasMultipleSlides
-            ? {
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
+        onSwiper={(swiper) => {
+          setSwiperInstance(swiper);
+          // Delay navigation setup to ensure DOM is ready
+          setTimeout(() => {
+            if (prevRef.current && nextRef.current && swiper) {
+              try {
+                // Ensure navigation params exist
+                if (!swiper.params.navigation) {
+                  swiper.params.navigation = {};
+                }
+                swiper.params.navigation.prevEl = prevRef.current;
+                swiper.params.navigation.nextEl = nextRef.current;
+                
+                // Initialize navigation if it exists
+                if (swiper.navigation) {
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
+              } catch (error) {
+                console.warn('Swiper navigation setup failed:', error);
               }
-            : false
-        }
-        loop={hasMultipleSlides}
+            }
+          }, 100);
+        }}
+        onBeforeInit={(swiper) => {
+          try {
+            if (typeof swiper.params.navigation !== 'boolean') {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
+          } catch (error) {
+            console.warn('onBeforeInit navigation setup failed:', error);
+          }
+        }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        loop={categoryData.length > 3} // Enable loop if we have enough items
         grabCursor={true}
         breakpoints={getBreakpoints()}
         className="category-carousel"
-        watchOverflow={true}
+        watchOverflow={false} // Disable watchOverflow to always show navigation
+        allowTouchMove={true}
+        simulateTouch={true}
       >
-        {categoryData.map((category) => (
-          <SwiperSlide key={category._id} className="!w-auto">
+        {categoryData.map((category, index) => (
+          <SwiperSlide key={category._id || index} className="!w-auto">
             <div
               onClick={() => handleCategoryClick(category._id, category.name)}
               className="group cursor-pointer p-2 sm:p-3 transition-transform duration-200 hover:scale-105"
@@ -222,26 +245,24 @@ const CategoryCarousel = () => {
         ))}
       </Swiper>
 
-      {/* Navigation Buttons - Only show if there are multiple slides */}
-      {hasMultipleSlides && (
-        <>
-          <button
-            ref={prevRef}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-full p-2 sm:p-3 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed group"
-            aria-label="Previous categories"
-          >
-            <IoChevronBackOutline className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 group-hover:text-customPink transition-colors" />
-          </button>
+      {/* Navigation Buttons - Always visible with manual handlers */}
+      <button
+        ref={prevRef}
+        onClick={handlePrevClick}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-full p-2 sm:p-3 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed group swiper-button-prev-custom"
+        aria-label="Previous categories"
+      >
+        <IoChevronBackOutline className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 group-hover:text-customPink transition-colors" />
+      </button>
 
-          <button
-            ref={nextRef}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-full p-2 sm:p-3 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed group"
-            aria-label="Next categories"
-          >
-            <IoChevronForward className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 group-hover:text-customPink transition-colors" />
-          </button>
-        </>
-      )}
+      <button
+        ref={nextRef}
+        onClick={handleNextClick}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg hover:shadow-xl rounded-full p-2 sm:p-3 transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed group swiper-button-next-custom"
+        aria-label="Next categories"
+      >
+        <IoChevronForward className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 group-hover:text-customPink transition-colors" />
+      </button>
     </div>
   );
 };
