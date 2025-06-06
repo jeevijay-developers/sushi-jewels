@@ -1,12 +1,12 @@
 export const shirts = [
   {
-    image: "Recipient/Her_1.jpg",
+    image: "Recipient/Her.jpg",
     alt: "her",
     title: "her",
     link: "/search?category=for-her&_id=682b1541e3079a080ce1f810",
   },
   {
-    image: "Recipient/Him_2.jpg",
+    image: "Recipient/Him.jpg",
     alt: "him",
     title: "him",
     link: "/search?category=for-him&_id=682b156fe3079a080ce1f816",
@@ -42,36 +42,35 @@ export const priceRanges = [
 ];
 
 
-
 export const categories = [
   {
-    label: "Mother",
+    label: "Gifts for Her",
     imageUrl: "/GiftingGuide/1.jpeg",
-    link: "/search?category=mother&_id=682b0b25e3079a080ce1f722",
+    link: "/search?category=for-her&_id=682b0b25e3079a080ce1f722",
   },
   {
-    label: "Wife",
+    label: "Anniversary Gifts",
     imageUrl: "/GiftingGuide/2.jpeg",
-    link: "/search?category=wife&_id=682b0b69e3079a080ce1f72f",
+    link: "/search?category=anniversary&_id=682b0b69e3079a080ce1f72f",
   },
   {
-    label: "New Mom",
+    label: "New Mom Jewelry",
     imageUrl: "/GiftingGuide/3.jpeg",
     link: "/search?category=new-mom&_id=682b0b8fe3079a080ce1f735",
   },
   {
-    label: "Husband",
+    label: "Gifts for Him",
     imageUrl: "/GiftingGuide/4.jpeg",
-    link: "/search?category=husband&_id=682b0cbfe3079a080ce1f73b",
+    link: "/search?category=for-him&_id=682b0cbfe3079a080ce1f73b",
   },
   {
-    label: "Friends",
+    label: "For Friends",
     imageUrl: "/GiftingGuide/5.jpeg",
-    link: "/search?category=friends&_id=682b108be3079a080ce1f7ca",
+    link: "/search?category=just-because&_id=682b108be3079a080ce1f7ca",
   },
   {
-    label: "Brother",
+    label: "Birthday Jewelry",
     imageUrl: "/GiftingGuide/6.jpeg",
-    link: "/search?category=brother&_id=682b10c3e3079a080ce1f7d1",
+    link: "/search?category=birthday&_id=682b10c3e3079a080ce1f7d1",
   },
 ];
