@@ -12,8 +12,9 @@ const ShopByPrice = () => {
     <section className="w-full bg-gradient-to-r from-customPink to-red-500 py-12 px-4">
       <div className="container mx-auto">
         <h2 className="text-center text-2xl md:text-3xl font-bold text-white mb-8">
-          Shop By Price
+          Discover Jewelry by Collection
         </h2>
+
         <div className="flex overflow-x-auto pb-4 space-x-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 max-w-6xl mx-auto">
           {priceRanges.map((range, index) => {
             const CardContent = (
@@ -33,14 +34,14 @@ const ShopByPrice = () => {
                 )}
                 <p
                   className={`text-base font-semibold ${
-                    range.premium ? "text-white" : "text-gray-600"
+                    range.premium ? "text-gray-600" : "text-gray-600"
                   } text-center`}
                 >
                   {range.label}
                 </p>
                 <p
                   className={`text-xl md:text-2xl font-bold mt-1 ${
-                    range.premium ? "text-white" : "text-gray-800"
+                    range.premium ? "text-gray-800" : "text-gray-800"
                   } text-center`}
                 >
                   {range.price}
@@ -49,7 +50,7 @@ const ShopByPrice = () => {
                   className={`mt-4 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer
                   ${
                     range.premium
-                      ? "bg-white text-customPink"
+                      ? "bg-customPink text-customPink"
                       : "bg-customPink text-white"
                   }
                 `}

@@ -15,31 +15,33 @@ export const shirts = [
 
 export const priceRanges = [
   {
-    label: "Under",
-    price: "₹999",
-    gradient: "bg-white",
-    link: "/search?category=under-999&_id=682b08be78df977cf51c8007",
+    label: "Everyday Elegance",
+    price: "Under ₹1999",
+    gradient: "bg-gradient-to-br from-[#FFF8E1] via-[#FBE7A1] to-[#F3D37B]",
+    link: "/search?collection=everyday-elegance&_id=682b08be78df977cf51c8007",
   },
   {
-    label: "Under",
-    price: "₹2999",
-    gradient: "bg-white",
-    link: "/search?category=under-2999&_id=682b0a10e3079a080ce1f701",
+    label: "Sparkle Essentials",
+    price: "Under ₹2999",
+    gradient: "bg-gradient-to-br from-[#FFF9E5] via-[#FAE6B1] to-[#F0C878]",
+    link: "/search?collection=sparkle-essentials&_id=682b0a10e3079a080ce1f701",
   },
   {
-    label: "Under",
-    price: "₹4999",
-    gradient: "bg-white",
-    link: "/search?category=under-4999&_id=682b0aa6e3079a080ce1f715",
+    label: "Timeless Classics",
+    price: "Under ₹3999",
+    gradient: "bg-gradient-to-br from-[#FFFBEA] via-[#F5D58E] to-[#EAC46F]",
+    link: "/search?collection=timeless-classics&_id=682b0aa6e3079a080ce1f715",
   },
   {
-    label: "Premium",
-    price: "Gifts",
-    gradient: "bg-gradient-to-br from-orange-400 to-customPink",
+    label: "The Luxe Edit",
+    price: "Signature Pieces",
+    gradient: "bg-gradient-to-br from-[#FFF3C2] via-[#F5D88D] to-[#D4AF37]",
     premium: true,
-    link: "/search?category=premium-gifts&_id=682b0ae9e3079a080ce1f71b",
+    link: "/search?collection=the-luxe-edit&_id=682b0ae9e3079a080ce1f71b",
   },
 ];
+
+
 
 export const categories = [
   {
