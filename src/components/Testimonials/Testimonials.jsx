@@ -30,8 +30,10 @@ const testimonials = [
   {
     name: "Lakshay Saxena",
     img: "/people/5.jpg",
-    text: "My Sushi-Jewelry necklace has become my go-to accessory. It elevates any outfit and still feels light and comfortable all day long.",
+    text: "The Sushi-Jewelry watch is the perfect blend of style and function. It adds a sharp touch to my look and feels solid without being bulky — I wear it every day.",
   },
+  
+  
   {
     name: "George",
     img: "/people/6.jpg",
