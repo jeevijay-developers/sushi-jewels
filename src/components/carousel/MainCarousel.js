@@ -130,7 +130,7 @@ const MainCarousel = () => {
         ))}
       </Swiper>
 
-      <div className="xl:w-[62%] w-full">
+      <div className="w-[80%] mx-auto">
         <CategoryCarousel />
       </div>
     </div>

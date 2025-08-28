@@ -148,7 +148,7 @@ const CategoryCarousel = () => {
   }
 
   return (
-    <div className="relative my-10 px-2 sm:px-4">
+    <div className="w-full relative my-10 px-2 sm:px-4">
       <Swiper
         ref={swiperRef}
         modules={[Autoplay, Navigation]}
