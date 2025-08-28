@@ -2,17 +2,15 @@ import { useContext, useState, Fragment } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useCart } from "react-use-cart";
 import { IoSearchOutline } from "react-icons/io5";
 import { TiThMenu } from "react-icons/ti";
-import { Popover, Transition } from "@headlessui/react";
+import { Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import useTranslation from "next-translate/useTranslation";
 // import "@blueprintjs/core/lib/css/blueprint.css";
 // import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 //internal import
-import { getUserSession } from "@lib/auth";
 import useGetSetting from "@hooks/useGetSetting";
 import { handleLogEvent } from "src/lib/analytics";
 import CartDrawer from "@components/drawer/CartDrawer";
@@ -25,6 +23,7 @@ import CategoryDrawer from "@components/drawer/CategoryDrawer";
 const Navbar = () => {
   const { t } = useTranslation("common");
   const [searchText, setSearchText] = useState("");
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const { toggleCategoryDrawer } = useContext(SidebarContext);
   const router = useRouter();
   const { showingTranslateValue } = useUtilsFunction();
@@ -176,20 +175,27 @@ const Navbar = () => {
             </Link>
           )}
           {storeCustomizationSetting?.navbar?.categories_menu_status && (
-            <Popover className="relative">
-              <Popover.Button className="font-montserrat group inline-flex items-center text-lg font-medium focus:outline-none  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full">
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsCategoriesOpen(true)}
+              onMouseLeave={() => setIsCategoriesOpen(false)}
+            >
+              <button className="font-montserrat group inline-flex items-center text-lg font-medium focus:outline-none  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full">
                 <span>
                   {showingTranslateValue(
                     storeCustomizationSetting?.navbar?.categories
                   )}
                 </span>
                 <ChevronDownIcon
-                  className="ml-1 h-3 w-3 group-hover:text-black-200"
+                  className={`ml-1 h-3 w-3 transition-transform duration-200 ${
+                    isCategoriesOpen ? 'rotate-180' : ''
+                  }`}
                   aria-hidden="true"
                 />
-              </Popover.Button>
+              </button>
 
               <Transition
+                show={isCategoriesOpen}
                 as={Fragment}
                 enter="transition ease-out duration-200"
                 enterFrom="opacity-0 translate-y-1"
@@ -198,13 +204,13 @@ const Navbar = () => {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Popover.Panel className="absolute z-10 -ml-1 mt-1 transform w-screen max-w-xs c-h-65vh bg-white">
+                <div className="absolute z-10 -ml-1 mt-1 transform w-screen max-w-xs c-h-65vh bg-white">
                   <div className="font-montserrat rounded-md shadow-lg ring-1 ring-black ring-opacity-5 overflow-y-scroll flex-grow scrollbar-hide w-full h-full">
                     <Category />
                   </div>
-                </Popover.Panel>
+                </div>
               </Transition>
-            </Popover>
+            </div>
           )}
           {storeCustomizationSetting?.navbar?.contact_menu_status && (
             <Link

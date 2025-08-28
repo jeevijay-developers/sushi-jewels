@@ -60,7 +60,7 @@ const GiftingGuide = () => {
                             transform transition-all duration-300
                             group-hover:bg-gradient-to-r group-hover:from-purple-100 group-hover:to-violet-200
                             group-hover:border-purple-400
-                            w-full text-center">
+                            w-full text-center whitespace-nowrap">
                 {category.label}
               </div>
             </div>

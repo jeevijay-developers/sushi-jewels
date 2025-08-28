@@ -28,9 +28,8 @@ const CategoryCard = ({ title, icon, nested, id }) => {
   const showCategory = (id, categoryName) => {
     const name = categoryName.toLowerCase().replace(/[^A-Z0-9]+/gi, "-");
 
-    setShow(!show);
     router.push(`/search?category=${name}&_id=${id}`);
-    closeCategoryDrawer;
+    closeCategoryDrawer();
     setIsLoading(!isLoading);
   };
 
@@ -38,9 +37,8 @@ const CategoryCard = ({ title, icon, nested, id }) => {
   const handleSubNestedCategory = (id, categoryName) => {
     const name = categoryName.toLowerCase().replace(/[^A-Z0-9]+/gi, "-");
 
-    setShowSubCategory({ id: id, show: showSubCategory.show ? false : true });
     router.push(`/search?category=${name}&_id=${id}`);
-    closeCategoryDrawer;
+    closeCategoryDrawer();
     setIsLoading(!isLoading);
   };
 
@@ -48,12 +46,36 @@ const CategoryCard = ({ title, icon, nested, id }) => {
     const name = categoryName.toLowerCase().replace(/[^A-Z0-9]+/gi, "-");
 
     router.push(`/search?category=${name}&_id=${id}`);
-    closeCategoryDrawer;
+    closeCategoryDrawer();
     setIsLoading(!isLoading);
   };
 
+  // Hover handlers
+  const handleMouseEnter = () => {
+    if (nested?.length > 0) {
+      setShow(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setShow(false);
+    setShowSubCategory({ id: "", show: false });
+  };
+
+  const handleSubCategoryMouseEnter = (childrenId) => {
+    setShowSubCategory({ id: childrenId, show: true });
+  };
+
+  const handleSubCategoryMouseLeave = () => {
+    setShowSubCategory({ id: "", show: false });
+  };
+
   return (
-    <>
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="relative"
+    >
       <a
         onClick={() => showCategory(id, title)}
         className="p-2 flex items-center rounded-md hover:bg-gray-50 w-full hover:text-customPink"
@@ -73,7 +95,7 @@ const CategoryCard = ({ title, icon, nested, id }) => {
         <div className="inline-flex items-center justify-between ml-3 text-sm font-medium w-full hover:text-customPink">
           {title}
           {nested?.length > 0 && (
-            <span className="transition duration-700 ease-in-out inline-flex loading-none items-end text-gray-400">
+            <span className="transition duration-300 ease-in-out inline-flex loading-none items-end text-gray-400">
               {show ? <IoChevronDownOutline /> : <IoChevronForwardOutline />}
             </span>
           )}
@@ -82,7 +104,11 @@ const CategoryCard = ({ title, icon, nested, id }) => {
       {show && nested.length > 0 && (
         <ul className="pl-6 pb-3 pt-1 -mt-1">
           {nested.map((children) => (
-            <li key={children._id}>
+            <li 
+              key={children._id}
+              onMouseEnter={() => handleSubCategoryMouseEnter(children._id)}
+              onMouseLeave={handleSubCategoryMouseLeave}
+            >
               {children.children.length > 0 ? (
                 <a
                   onClick={() =>
@@ -101,7 +127,7 @@ const CategoryCard = ({ title, icon, nested, id }) => {
                     {showingTranslateValue(children.name)}
 
                     {children.children.length > 0 ? (
-                      <span className="transition duration-700 ease-in-out inline-flex loading-none items-end text-gray-400">
+                      <span className="transition duration-300 ease-in-out inline-flex loading-none items-end text-gray-400">
                         {showSubCategory.id === children._id &&
                         showSubCategory.show ? (
                           <IoChevronDownOutline />
@@ -157,7 +183,7 @@ const CategoryCard = ({ title, icon, nested, id }) => {
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 
