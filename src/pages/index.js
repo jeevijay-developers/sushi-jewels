@@ -116,7 +116,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* "" */}
             {/* popular products */}
             {storeCustomizationSetting?.home?.popular_products_status && (
-              <div className="bg-gray-50 lg:py-16 py-10">
+              <div className="bg-gray-50 py-10">
                 <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                   <div className="mb-10 text-center">
                     <h2 className="font-[lora] font-thin text-[2rem] lg:text-[3.25rem] mb-2">
@@ -127,6 +127,15 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                         data={storeCustomizationSetting?.home?.popular_title}
                       />
                     </h2>
+                    <p className="w-1/2 mx-auto text-lg font-sans text-gray-600 leading-6">
+                      <CMSkeleton
+                        count={4}
+                        height={10}
+                        error={error}
+                        loading={loading}
+                        data={storeCustomizationSetting?.home?.popular_description}
+                      />
+                    </p>
                   </div>
                   
                   <div className="w-full">
@@ -139,7 +148,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                       />
                     ) : (
                       <>
-                        <div className="flex flex-wrap gap-4 lg:gap-2 justify-around">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
                           {popularProducts
                             ?.slice(0, productsToShow)
                             .map((product) => (
@@ -198,11 +207,11 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               <GiftingGuide />
             </div>
             
-            <div className="py-12">
+            <div>
               <WhyChooseUs />
             </div>
             
-            <div className="py-12">
+            <div>
               <JewelleryGallery />
             </div>
 
@@ -238,7 +247,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                         />
                       ) : (
                         <>
-                          <div className="flex flex-wrap gap-4 lg:gap-6 justify-center">
+                          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
                             {discountProducts
                               ?.slice(0, discountedProductsToShow)
                               .map((product) => (

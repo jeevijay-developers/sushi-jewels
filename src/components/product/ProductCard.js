@@ -67,12 +67,8 @@ const ProductCard = ({ product, attributes }) => {
 
       <div
         data-aos="fade-up"
-        className="para-hover w-[48%] sm:w-[32%] md:w-[24%] lg:w-[23%] xl:w-[22%] 2xl:w-[25%] group box-border overflow-hidden flex rounded-2xl shadow-lg hover:shadow-2xl pe-0 flex-col items-center relative bg-white border border-gray-100 hover:border-purple-200 transition-all duration-300 hover:-translate-y-2 my-5"
+        className="para-hover group box-border overflow-hidden flex rounded-2xl shadow-lg hover:shadow-2xl pe-0 flex-col items-center relative bg-white border border-gray-100 hover:border-purple-200 transition-all duration-300 hover:-translate-y-2 my-5"
       >
-        <div className="w-full flex justify-between p-3">
-          {/* <Stock product={product} stock={product.stock} card /> */}
-          {/* <Discount product={product} /> */}
-        </div>
         <div
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => {

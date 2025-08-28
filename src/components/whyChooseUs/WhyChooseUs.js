@@ -2,11 +2,8 @@ import React from "react";
 import { GiDiamondRing } from "react-icons/gi";
 import { MdOutlineVerifiedUser, MdSupportAgent } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
-import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { FaRegGem } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const WhyChooseUs = () => {
   return (
