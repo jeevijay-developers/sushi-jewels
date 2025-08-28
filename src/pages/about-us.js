@@ -110,13 +110,13 @@ const AboutUs = () => {
             <div className="mt-10 lg:mt-0">
               <img
                 width={920}
-                height={750}
+                height={1050}
                 src={
                   storeCustomizationSetting?.about_us?.content_right_img ||
                   "/about-us.jpg"
                 }
                 alt="logo"
-                className=""
+                className="h-[25rem] object-fill rounded-lg"
               />
             </div>
           </div>

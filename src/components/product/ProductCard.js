@@ -106,11 +106,11 @@ const ProductCard = ({ product, attributes }) => {
 
       <div
         data-aos="fade-up"
-        className="para-hover w-[48%] sm:w-[45%] md:w-[31%] lg:w-[18%] group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center relative hover:shadow-2xl"
+        className="para-hover w-[48%] sm:w-[32%] md:w-[24%] lg:w-[23%] xl:w-[19%] 2xl:w-[18%] group box-border overflow-hidden flex rounded-2xl shadow-lg hover:shadow-2xl pe-0 flex-col items-center relative bg-white border border-gray-100 hover:border-purple-200 transition-all duration-300 hover:-translate-y-2"
       >
-        <div className="w-full flex justify-between">
+        <div className="w-full flex justify-between p-3">
           {/* <Stock product={product} stock={product.stock} card /> */}
-          <Discount product={product} />
+          {/* <Discount product={product} /> */}
         </div>
         <div
           onMouseEnter={() => setIsHovering(true)}
@@ -121,97 +121,96 @@ const ProductCard = ({ product, attributes }) => {
           onClick={() => {
             router.push(`/product/${product.slug}`);
           }}
-          className="relative w-full pt-[100%]   md:pt-[80%] cursor-pointer rounded-2xl overflow-hidden"
+          className="relative w-full pt-[100%] md:pt-[85%] cursor-pointer rounded-xl overflow-hidden mx-3 mb-2 bg-gradient-to-br from-gray-50 to-gray-100"
         >
-          <div className="absolute top-0 left-0 w-full h-full p-2">
+          <div className="absolute top-0 left-0 w-full h-full p-1">
             {Array.isArray(product.image) && product.image.length > 0 ? (
-              <div className="relative w-full h-full rounded-2xl overflow-hidden">
+              <div className="relative w-full h-full rounded-xl overflow-hidden shadow-inner">
                 {" "}
                 <ImageWithFallback
                   src={product.image[currentImageIndex]}
                   alt={showingTranslateValue(product?.title) || "Product Image"}
                   fill
-                  className="object-contain transition duration-700 ease-in-out transform group-hover:scale-105 rounded-2xl"
+                  className="object-contain transition duration-700 ease-in-out transform group-hover:scale-102 rounded-xl"
                   sizes="(max-width: 640px) 48vw, (max-width: 768px) 44vw, 22vw"
                 />
               </div>
             ) : (
-              <div className="relative w-full h-full rounded-2xl overflow-hidden">
+              <div className="relative w-full h-full rounded-xl overflow-hidden shadow-inner">
                 {" "}
-                {/* Already has rounded-md and overflow-hidden */}
                 <Image
                   fill
                   src={product.imageUrl}
                   alt={product.title}
-                  className="object-cover transition duration-500 ease-in-out transform group-hover:scale-105 rounded-2xl"
+                  className="object-cover transition duration-500 ease-in-out transform group-hover:scale-102 rounded-xl"
                   sizes="100%"
                 />
               </div>
             )}
           </div>
         </div>
-        <div className="w-full px-2 sm:px-3 lg:px-4 pb-3 sm:pb-4 overflow-hidden">
-          <div className="flex flex-row justify-between">
+        <div className="w-full px-3 sm:px-4 lg:px-5 pb-4 sm:pb-5 overflow-hidden">
+          <div className="flex flex-row justify-between items-start">
             {" "}
-            <div className="relative mb-1 mt-4">
+            <div className="relative mb-2 mt-3 flex-1 mr-2">
               <span className="text-gray-400 font-medium text-xs d-block mb-1">
                 {product.unit}
               </span>
-              <h2 className="text-heading truncate mb-0 block text-xs sm:text-sm font-medium text-gray-600 relative">
-                <span className="line-clamp-2 font-bold para-hover-target">
+              <h2 className="text-heading truncate mb-0 block text-sm sm:text-base md:text-lg font-semibold text-gray-700 relative">
+                <span className="line-clamp-2 font-bold para-hover-target hover:text-purple-600 transition-colors duration-200">
                   {showingTranslateValue(product?.title)}
                 </span>
               </h2>
             </div>
             {/* share button */}
-            <div>
+            <div className="flex-shrink-0 mt-3">
               {" "}
               <div
-                className={`absolute transition-transform ease-in-out shadow-lg shadow-gray-400/35 bg-gray-100 p-1 rounded-3xl ${
+                className={`absolute transition-transform ease-in-out shadow-xl shadow-gray-400/30 bg-white border border-gray-200 p-2 rounded-2xl z-20 ${
                   isToolTipVisible
                     ? "flex -translate-y-16 sm:-translate-y-20 -translate-x-20 sm:-translate-x-28 "
                     : "hidden"
                 }`}
               >
-                <div className="tooltip-container flex items-center justify-center gap-1">
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center shadow-gray-200 rounded-full hover:bg-green-500 hover:text-gray-50">
+                <div className="tooltip-container flex items-center justify-center gap-2">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-sm rounded-full hover:bg-green-500 hover:text-gray-50 transition-all duration-200">
                     <WhatsappShareButton
                       url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
                       quote=""
                     >
-                      <WhatsappIcon size={24} round />
+                      <WhatsappIcon size={20} round />
                     </WhatsappShareButton>
                   </div>
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-50 shadow-md shadow-gray-200 rounded-full hover:bg-sky-500 hover:text-gray-50">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-gray-50 shadow-sm rounded-full hover:bg-sky-500 hover:text-gray-50 transition-all duration-200">
                     <FacebookShareButton
                       url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
                       quote=""
                     >
-                      <FacebookIcon size={24} round />
+                      <FacebookIcon size={20} round />
                     </FacebookShareButton>
                   </div>
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center  bg-gray-50 rounded-full shadow-md shadow-gray-200 hover:bg-gray-700 hover:text-gray-50">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-gray-50 rounded-full shadow-sm hover:bg-gray-700 hover:text-gray-50 transition-all duration-200">
                     <TwitterShareButton
                       url={`${process.env.NEXT_PUBLIC_STORE_DOMAIN}/product/${product.slug}`}
                       quote=""
                     >
-                      <XIcon size={24} round />
+                      <XIcon size={20} round />
                     </TwitterShareButton>
                   </div>
                 </div>
                 <div className="absolute left-0 w-full bg-transparent z-50 h-4 -bottom-4" />
-                <div className="absolute -bottom-2 left-[45%] h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-gray-100" />
+                <div className="absolute -bottom-2 left-[45%] h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-white" />
               </div>
               <div
-                className={`relative border-4 border-gray-50 bg-gradient-to-r from-customPink to-customPink p-2 rounded-full transition-all duration-300 ease-in-out shadow-gray-300/50 shadow-xl hover:cursor-pointer w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center ${
+                className={`relative border-2 border-gray-200 bg-gradient-to-r from-purple-500 to-violet-500 p-2 rounded-full transition-all duration-300 ease-in-out shadow-lg hover:cursor-pointer w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center hover:shadow-xl ${
                   isToolTipVisible
-                    ? "scale-110 -translate-y-1 from-violet-800 to-indigo-800"
-                    : ""
+                    ? "scale-102 -translate-y-1 from-violet-600 to-indigo-600 border-violet-300"
+                    : "hover:from-purple-600 hover:to-violet-600"
                 }`}
                 onClick={toggleToolTip}
               >
                 <FaShareAlt
-                  className={`text-gray-100 dark:text-white text-sm sm:text-base transition-transform duration-300 hover:rotate-180 ${
+                  className={`text-white text-xs sm:text-sm transition-transform duration-300 hover:rotate-180 ${
                     isToolTipVisible ? "rotate-180" : ""
                   }`}
                 />
@@ -220,8 +219,7 @@ const ProductCard = ({ product, attributes }) => {
           </div>
 
           {/* //^ Price section */}
-          <div className="flex justify-between items-center text-heading text-xs sm:text-sm md:text-base lg:text-xl ">
-            {/* <div className="flex justify-between items-center text-heading text-xs sm:text-sm md:text-base lg:text-xl para-hover-target"> */}
+          <div className="flex justify-between items-center text-heading text-sm sm:text-base md:text-lg lg:text-xl mb-3">
             <Price
               card
               product={product}
@@ -229,59 +227,11 @@ const ProductCard = ({ product, attributes }) => {
               price={product?.prices?.price}
               originalPrice={product?.prices?.originalPrice}
             />
-
-            {/* {inCart(product._id) ? (
-              <div>
-                {items.map(
-                  (item) =>
-                    item.id === product._id && (
-                      <div
-                        key={item.id}
-                        className="h-7 sm:h-9 w-auto flex flex-nowrap items-center justify-evenly py-1 px-2 bg-customPink text-white rounded"
-                      >
-                        <button
-                          onClick={() =>
-                            updateItemQuantity(item.id, item.quantity - 1)
-                          }
-                          className="text-sm sm:text-base"
-                        >
-                          <IoRemove />
-                        </button>
-                        <p className="text-xs sm:text-sm text-dark px-1 font-serif font-semibold">
-                          {item.quantity}
-                        </p>
-                        <button
-                          onClick={() =>
-                            item?.variants?.length > 0
-                              ? handleAddItem(item)
-                              : handleIncreaseQuantity(item)
-                          }
-                          className="text-sm sm:text-base"
-                        >
-                          <IoAdd />
-                        </button>
-                      </div>
-                    )
-                )}{" "}
-              </div>
-            ) : (
-              <button
-                onClick={() => handleAddItem(product)}
-                aria-label="cart"
-                className="h-7 w-7 sm:h-9 sm:w-9 flex items-center justify-center border border-gray-200 rounded text-customPink hover:border-customPinkDark hover:bg-customPinkDark hover:text-white transition-all"
-              >
-                {" "}
-                <span className="text-lg sm:text-xl">
-                  <IoBagAddSharp />
-                </span>{" "}
-              </button>
-            )} */}
           </div>
 
           {/* send Query button */}
           <button
-            className="bg-customPinkDark w-full my-2 hover:bg-customPink text-white items-center font-bold py-2 px-4 rounded"
-            // onClick={() => setQueryModalOpen(true)}
+            className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 w-full text-white items-center font-semibold py-2.5 px-4 rounded-xl transition-all duration-300 transform hover:scale-103 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
             onClick={() => router.push(`/product-query/${product.slug}`)}
           >
             Send Query

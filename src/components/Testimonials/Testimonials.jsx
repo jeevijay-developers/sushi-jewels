@@ -74,7 +74,7 @@ const Testimonials = () => {
           {testimonials.map((t, index) => (
             <SwiperSlide key={index}>
               <div className="h-full flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-7 text-left shadow-sm">
-                <h4 className="mb-4 font-lexend font-normal leading-relaxed text-slate-600">
+                <h4 className="mb-4 font-lexend font-normal leading-relaxed text-slate-600 line-clamp-3">
                   "{t.text}"
                 </h4>
                 <div className="mt-4 flex items-center space-x-3">
@@ -90,6 +90,11 @@ const Testimonials = () => {
           ))}
         </Swiper>
       </div>
+      <style>{`
+        .swiper-pagination {
+          bottom: 10px;
+        }
+      `}</style>
     </div>
   );
 };

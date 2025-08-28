@@ -68,25 +68,15 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
         <Loading loading={isLoading} />
       ) : (
         <Layout>
-          <div className="">
+          <div className="min-h-screen">
             {/* <StickyCart /> */}
             <div className="bg-white">
               <div className="mx-auto py-1">
-                {" "}
-                {/* max-w-screen-2xl */}
                 <div className="flex w-full">
-                  <div className="flex-shrink  lg:block w-full ">
+                  <div className="flex-shrink lg:block w-full">
                     <MainCarousel />
                   </div>
-                  {/* <div className="w-full hidden lg:flex">
-                    <OfferCard />
-                  </div> */}
                 </div>
-                {/* {storeCustomizationSetting?.home?.promotion_banner_status && (
-                  <div className="bg-orange-100 px-10 py-6 rounded-lg mt-6">
-                    <Banner />
-                  </div>
-                )} */}
               </div>
             </div>
 
@@ -126,10 +116,10 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* "" */}
             {/* popular products */}
             {storeCustomizationSetting?.home?.popular_products_status && (
-              <div className=" bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10 sticky">
-                <div className="mb-10  ">
-                  <div className=" w-full ">
-                    <h2 className="font-[lora] font-thin text-center text-[2rem]   lg:text-[3.25rem] mb-2">
+              <div className="bg-gray-50 lg:py-16 py-10">
+                <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                  <div className="mb-10 text-center">
+                    <h2 className="font-[lora] font-thin text-[2rem] lg:text-[3.25rem] mb-2">
                       <CMSkeleton
                         count={1}
                         height={30}
@@ -137,20 +127,8 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                         data={storeCustomizationSetting?.home?.popular_title}
                       />
                     </h2>
-                    {/* <p className="text-base font-sans text-gray-600 leading-6">
-                      <CMSkeleton
-                        count={5}
-                        height={10}
-                        error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.home?.popular_description
-                        }
-                      />
-                    </p> */}
                   </div>
-                </div>
-                <div className="flex">
+                  
                   <div className="w-full">
                     {loading ? (
                       <CMSkeleton
@@ -161,7 +139,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                       />
                     ) : (
                       <>
-                        <div className="flex flex-wrap gap-2 md:gap-4 lg:gap-6 justify-center px-2 sm:px-4">
+                        <div className="flex flex-wrap gap-4 lg:gap-6 justify-center">
                           {popularProducts
                             ?.slice(0, productsToShow)
                             .map((product) => (
@@ -176,7 +154,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                           <div className="flex justify-center mt-8">
                             <button
                               onClick={handleLoadMore}
-                              className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
+                              className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white px-8 py-3 rounded-xl transition-all duration-300 font-semibold text-sm sm:text-base transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
                               View More
                             </button>
@@ -201,36 +179,43 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             )} */}
 
             {/* Classic Plain Shirt */}
-            <div>
-              <h1 className="px-6 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center">
+            <div className="py-12">
+              <h1 className="px-6 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center mb-8">
                 Personal Style Picks
               </h1>
               <ClassicShirtCard />
             </div>
-            <div>
-              {/* <h1 className="px-6 my-3 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center">
-                Shop By Price
-              </h1> */}
+            
+            <div className="py-8">
               <ShopByCategory />
             </div>
 
-            <div className="mt-[4.5rem] hover:cursor-pointer">
+            <div className="mt-16 hover:cursor-pointer">
               <FormalTrouser />
             </div>
-            <GiftingGuide />
-            <WhyChooseUs />
-            <JewelleryGallery />
+            
+            <div className="py-12">
+              <GiftingGuide />
+            </div>
+            
+            <div className="py-12">
+              <WhyChooseUs />
+            </div>
+            
+            <div className="py-12">
+              <JewelleryGallery />
+            </div>
 
             {/* discounted products */}
             {storeCustomizationSetting?.home?.discount_product_status &&
               discountProducts?.length > 0 && (
                 <div
                   id="discount"
-                  className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10"
+                  className="bg-gray-50 lg:py-16 py-10"
                 >
-                  <div className="mb-10 flex justify-center">
-                    <div className="text-center w-full lg:w-2/5">
-                      <h2 className="px-6 font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem] text-center ">
+                  <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                    <div className="mb-10 text-center">
+                      <h2 className="font-[lora] text-[1.75rem] md:text-[2.25rem] lg:text-[3rem]">
                         <CMSkeleton
                           count={1}
                           height={30}
@@ -241,20 +226,8 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                           }
                         />
                       </h2>
-                      {/* <p className="text-base font-sans text-gray-600 leading-6">
-                        <CMSkeleton
-                          count={5}
-                          height={20}
-                          loading={loading}
-                          data={
-                            storeCustomizationSetting?.home
-                              ?.latest_discount_description
-                          }
-                        />
-                      </p> */}
                     </div>
-                  </div>
-                  <div className="flex flex-row flex-wrap gap-5">
+                    
                     <div className="w-full">
                       {loading ? (
                         <CMSkeleton
@@ -264,35 +237,39 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                           loading={loading}
                         />
                       ) : (
-                        <div className="flex flex-wrap gap-2 md:gap-4 lg:gap-6 justify-center px-2 sm:px-4">
-                          {discountProducts
-                            ?.slice(0, discountedProductsToShow)
-                            .map((product) => (
-                              <ProductCard
-                                key={product._id}
-                                product={product}
-                                attributes={attributes}
-                              />
-                            ))}
-                        </div>
-                      )}
-                      {showLoadMoreDiscounted &&
-                        discountProducts.length > 4 && (
-                          <div className="flex justify-center mt-8">
-                            <button
-                              onClick={handleLoadMoreDiscounted}
-                              className="bg-customPink text-white px-6 py-3 rounded-md hover:bg-customPinkDark transition-colors duration-300 font-medium text-sm sm:text-base"
-                            >
-                              View More
-                            </button>
+                        <>
+                          <div className="flex flex-wrap gap-4 lg:gap-6 justify-center">
+                            {discountProducts
+                              ?.slice(0, discountedProductsToShow)
+                              .map((product) => (
+                                <ProductCard
+                                  key={product._id}
+                                  product={product}
+                                  attributes={attributes}
+                                />
+                              ))}
                           </div>
-                        )}
+                          {showLoadMoreDiscounted &&
+                            discountProducts.length > 4 && (
+                              <div className="flex justify-center mt-8">
+                                <button
+                                  onClick={handleLoadMoreDiscounted}
+                                  className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white px-8 py-3 rounded-xl transition-all duration-300 font-semibold text-sm sm:text-base transform hover:scale-105 shadow-lg hover:shadow-xl"
+                                >
+                                  View More
+                                </button>
+                              </div>
+                            )}
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
               )}
           </div>
-          <Testimonials />
+          <div className="py-12">
+            <Testimonials />
+          </div>
         </Layout>
       )}
     </>
