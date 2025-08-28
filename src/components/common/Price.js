@@ -10,7 +10,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
   return (
     <div className="font-serif product-price font-bold">
       <>
-        {actualOriginalPrice > currentPrice && (
+        {actualOriginalPrice >= currentPrice && (
           <span className="relative inline-block">
             <span
               className={

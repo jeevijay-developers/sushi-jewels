@@ -1,16 +1,13 @@
 import { useContext, useState, Fragment } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useCart } from "react-use-cart";
 import { IoSearchOutline } from "react-icons/io5";
-import { FaShoppingCart, FaUser, FaBell } from "react-icons/fa";
 import { TiThMenu } from "react-icons/ti";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import useTranslation from "next-translate/useTranslation";
-import { FaRegUser } from "react-icons/fa";
 // import "@blueprintjs/core/lib/css/blueprint.css";
 // import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
@@ -18,25 +15,19 @@ import { FaRegUser } from "react-icons/fa";
 import { getUserSession } from "@lib/auth";
 import useGetSetting from "@hooks/useGetSetting";
 import { handleLogEvent } from "src/lib/analytics";
-import NavbarPromo from "@layout/navbar/NavbarPromo";
 import CartDrawer from "@components/drawer/CartDrawer";
 import { SidebarContext } from "@context/SidebarContext";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import Category from "@components/category/Category";
-import MobileFooter from "@layout/footer/MobileFooter";
-import { FiAlignLeft, FiBell, FiShoppingCart } from "react-icons/fi";
+import { FiBell } from "react-icons/fi";
 import CategoryDrawer from "@components/drawer/CategoryDrawer";
-import NavbarSearch from "./NavbarSearch";
 
 const Navbar = () => {
-  const { t, lang } = useTranslation("common");
+  const { t } = useTranslation("common");
   const [searchText, setSearchText] = useState("");
-  const { toggleCartDrawer, toggleCategoryDrawer } = useContext(SidebarContext);
-  const { totalItems } = useCart();
+  const { toggleCategoryDrawer } = useContext(SidebarContext);
   const router = useRouter();
   const { showingTranslateValue } = useUtilsFunction();
-
-  const userInfo = getUserSession();
 
   const { storeCustomizationSetting } = useGetSetting();
 
@@ -60,7 +51,7 @@ const Navbar = () => {
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 relative">
           <div className="flex  flex-col items-center py-1">
             {/* Top Section - Logo and Icons */}
-            <div className="w-full flex  items-center justify-between">
+            <div className="w-full flex items-center justify-between">
               {/* Logo Section - Left */}
               {/* this code enables drawer */}
               <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
@@ -75,19 +66,18 @@ const Navbar = () => {
                   </span>
                 </button>
               </div>
-              <div className="w-20 sm:w-28 items-start justify-start hidden lg:flex ">
+              <div className="w-20 sm:w-28 items-start justify-start hidden lg:flex cursor-pointer my-2" onClick={() => router.push("/")}>
                 <img
-                  width={80}
-                  height={80}
+                  width={70}
+                  height={70}
                   className=" "
-                  
                   src="/logo/WhatsApp Image 2025-05-10 at 4.49.19 PM.jpeg"
                   alt="logo"
                 />
               </div>
-              <div className="lg:w-[70%] w-[50%] ">
+              <div className="w-[50%]">
                 <div className="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
-                  <div className="flex flex-col mx-auto w-full">
+                  <div className="flex flex-col mx-auto w-full border border-gray-200 rounded-xl">
                     <form
                       onSubmit={handleSubmit}
                       className="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full"
@@ -96,7 +86,7 @@ const Navbar = () => {
                         <input
                           onChange={(e) => setSearchText(e.target.value)}
                           value={searchText}
-                          className="form-input w-full pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
+                          className="form-input w-full pl-5 appearance-none transition ease-in-out  text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200  focus:ring-0 outline-none  focus:outline-none placeholder-gray-500 placeholder-opacity-75"
                           placeholder={t("search-placeholder")}
                         />
                       </label>
@@ -167,10 +157,10 @@ const Navbar = () => {
           {/* Navigation Items - Below Logo */}
         </div>
         {/* Navigation Items */}
-        <div className="hidden lg:flex items-center justify-center py-3 absolute z-[41] bg-transparent w-full space-x-6 hover:bg-white transition-colors duration-500 ease-in-out mx-auto">
+        <div className="hidden lg:flex items-center justify-center py-3 absolute z-[41] bg-transparent w-full space-x-6 text-black/90 hover:bg-white transition-colors duration-500 ease-in-out mx-auto">
           <Link
             href="/"
-            className=" font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+            className=" font-montserrat relative text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full "
           >
             {showingTranslateValue(storeCustomizationSetting?.navbar?.home) ||
               "Home"}
@@ -178,7 +168,7 @@ const Navbar = () => {
           {storeCustomizationSetting?.navbar?.about_menu_status && (
             <Link
               href="/about-us"
-              className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+              className="font-montserrat relative text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
             >
               {showingTranslateValue(
                 storeCustomizationSetting?.navbar?.about_us
@@ -187,7 +177,7 @@ const Navbar = () => {
           )}
           {storeCustomizationSetting?.navbar?.categories_menu_status && (
             <Popover className="relative">
-              <Popover.Button className="font-montserrat group inline-flex items-center text-[#192A56] hover:text-black-200 text-lg font-medium focus:outline-none  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full">
+              <Popover.Button className="font-montserrat group inline-flex items-center text-lg font-medium focus:outline-none  after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full">
                 <span>
                   {showingTranslateValue(
                     storeCustomizationSetting?.navbar?.categories
@@ -219,7 +209,7 @@ const Navbar = () => {
           {storeCustomizationSetting?.navbar?.contact_menu_status && (
             <Link
               href="/contact-us"
-              className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full "
+              className="font-montserrat relative text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full "
             >
               {showingTranslateValue(
                 storeCustomizationSetting?.navbar?.contact_us
@@ -229,7 +219,7 @@ const Navbar = () => {
           {storeCustomizationSetting?.navbar?.privacy_policy_status && (
             <Link
               href="/privacy-policy"
-              className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+              className="font-montserrat relative text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
             >
               {showingTranslateValue(
                 storeCustomizationSetting?.navbar?.privacy_policy
@@ -239,7 +229,7 @@ const Navbar = () => {
           {storeCustomizationSetting?.navbar?.term_and_condition_status && (
             <Link
               href="/terms-and-conditions"
-              className="font-montserrat relative text-[#192A56] hover:text-gray-700 text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+              className="font-montserrat relative text-lg font-medium after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
             >
               {showingTranslateValue(
                 storeCustomizationSetting?.navbar?.term_and_condition

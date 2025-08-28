@@ -139,7 +139,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                       />
                     ) : (
                       <>
-                        <div className="flex flex-wrap gap-4 lg:gap-6 justify-center">
+                        <div className="flex flex-wrap gap-4 lg:gap-2 justify-around">
                           {popularProducts
                             ?.slice(0, productsToShow)
                             .map((product) => (

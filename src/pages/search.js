@@ -5,7 +5,6 @@ import useTranslation from "next-translate/useTranslation";
 //internal import
 import Layout from "@layout/Layout";
 import useFilter from "@hooks/useFilter";
-import Card from "@components/cta-card/Card";
 import Loading from "@components/preloader/Loading";
 import ProductServices from "@services/ProductServices";
 import ProductCard from "@components/product/ProductCard";
@@ -16,13 +15,14 @@ import CategoryCarousel from "@components/carousel/CategoryCarousel";
 const Search = ({ products, attributes }) => {
   const { t } = useTranslation();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
-  const [visibleProduct, setVisibleProduct] = useState(18);
+  const [visibleProduct, setVisibleProduct] = useState(12);
 
   useEffect(() => {
     setIsLoading(false);
   }, [products]);
 
   const { setSortedField, productData } = useFilter(products);
+  console.log("Filtered product data:", productData);
 
   return (
     <Layout title="Search" description="This is search page">

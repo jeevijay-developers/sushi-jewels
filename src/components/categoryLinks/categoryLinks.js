@@ -37,7 +37,7 @@ export const priceRanges = [
     price: "Premium Collection",
     gradient: "bg-gradient-to-br from-[#FFF3C2] via-[#F5D88D] to-[#D4AF37]",
     premium: true,
-    link: "//search?category=premium-collection&_id=682b0ae9e3079a080ce1f71b",
+    link: "/search?category=premium-collection&_id=682b0ae9e3079a080ce1f71b",
   },
 ];
 

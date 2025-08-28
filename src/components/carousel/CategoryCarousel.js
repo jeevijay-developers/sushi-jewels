@@ -135,8 +135,8 @@ const CategoryCarousel = () => {
   // Get the correct data structure
   const categoryData = categories?.[0]?.children || [];
   
-  console.log("Category data:", categoryData); // Debug log
-  console.log("Number of categories:", categoryData.length); // Debug log
+  // console.log("Category data:", categoryData); // Debug log
+  // console.log("Number of categories:", categoryData.length); // Debug log
 
   // No data state
   if (!categoryData?.length) {

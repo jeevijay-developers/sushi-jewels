@@ -2,19 +2,11 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { IoAdd, IoBagAddSharp, IoRemove } from "react-icons/io5";
-import { useCart } from "react-use-cart";
 import { useRouter } from "next/router";
-import { FaWhatsapp, FaFacebook, FaShareAlt } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaShareAlt } from "react-icons/fa";
 import {
   FacebookIcon,
   FacebookShareButton,
-  LinkedinIcon,
-  LinkedinShareButton,
-  RedditIcon,
-  RedditShareButton,
-  TwitterIcon,
   TwitterShareButton,
   WhatsappIcon,
   WhatsappShareButton,
@@ -24,24 +16,16 @@ import {
 //internal import
 
 import Price from "@components/common/Price";
-import Stock from "@components/common/Stock";
-import { notifyError } from "@utils/toast";
-import useAddToCart from "@hooks/useAddToCart";
 import useGetSetting from "@hooks/useGetSetting";
-import Discount from "@components/common/Discount";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import ProductModal from "@components/modal/ProductModal";
 import ImageWithFallback from "@components/common/ImageWithFallBack";
-import { handleLogEvent } from "src/lib/analytics";
-import ProductQuery from "@components/ProductQuery/ProductQuery";
+
 
 const ProductCard = ({ product, attributes }) => {
-  const [queryModalOpen, setQueryModalOpen] = useState(false);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [isToolTipVisible, setIsToolTipVisible] = useState(false);
-  const { items, addItem, updateItemQuantity, inCart } = useCart();
-  const { handleIncreaseQuantity } = useAddToCart();
   const { globalSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
   const router = useRouter();
@@ -68,29 +52,6 @@ const ProductCard = ({ product, attributes }) => {
     }
     return () => clearInterval(intervalId);
   }, [isHovering, product.image]);
-  const handleAddItem = (p) => {
-    if (p.stock < 1) return notifyError("Insufficient stock!");
-
-    if (p?.variants?.length > 0) {
-      setModalOpen(!modalOpen);
-      return;
-    }
-    const { slug, variants, categories, description, ...updatedProduct } =
-      product;
-    const newItem = {
-      ...updatedProduct,
-      title: showingTranslateValue(p?.title),
-      id: p._id,
-      variant: p.prices,
-      price: p.prices.price,
-      originalPrice: product.prices?.originalPrice,
-    };
-    addItem(newItem);
-  };
-
-  const handleModalOpen = (event, id) => {
-    setModalOpen(event);
-  };
 
   return (
     <>
@@ -106,7 +67,7 @@ const ProductCard = ({ product, attributes }) => {
 
       <div
         data-aos="fade-up"
-        className="para-hover w-[48%] sm:w-[32%] md:w-[24%] lg:w-[23%] xl:w-[19%] 2xl:w-[18%] group box-border overflow-hidden flex rounded-2xl shadow-lg hover:shadow-2xl pe-0 flex-col items-center relative bg-white border border-gray-100 hover:border-purple-200 transition-all duration-300 hover:-translate-y-2"
+        className="para-hover w-[48%] sm:w-[32%] md:w-[24%] lg:w-[23%] xl:w-[22%] 2xl:w-[25%] group box-border overflow-hidden flex rounded-2xl shadow-lg hover:shadow-2xl pe-0 flex-col items-center relative bg-white border border-gray-100 hover:border-purple-200 transition-all duration-300 hover:-translate-y-2 my-5"
       >
         <div className="w-full flex justify-between p-3">
           {/* <Stock product={product} stock={product.stock} card /> */}
