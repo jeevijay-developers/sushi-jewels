@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {
   FaUser,
-  FaEnvelope,
   FaPhone,
   FaGem,
   FaRupeeSign,
@@ -42,7 +41,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
   };
   
   return (
-    <div className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
+    <div className="h-fit w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
       {/* Header Section */}
       <div className="bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-4 relative">
         <span className="flex xl:hidden">
@@ -160,7 +159,7 @@ const JewelleryQueryForm = ({ setDisplayQueryForm }) => {
           </div>
 
           {/* Submit Button */}
-          <div className="md:col-span-2 flex justify-center mt-4">
+          <div className="md:col-span-2 flex justify-center">
             <button
               type="submit"
               className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"

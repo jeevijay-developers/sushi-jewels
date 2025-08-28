@@ -9,18 +9,14 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 //internal import
-
 import useGetSetting from "@hooks/useGetSetting";
 import useUtilsFunction from "@hooks/useUtilsFunction";
-import JewelleryQueryForm from "@components/form/JewelleryQueryForm";
-import { TbBrandGoogleBigQuery } from "react-icons/tb";
 import CategoryCarousel from "./CategoryCarousel";
+
 const MainCarousel = () => {
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue, showingUrl, showingImage } =
     useUtilsFunction();
-  const [displayQueryForm, setDisplayQueryForm] = React.useState(true);
-  const [isSmallScreen, setIsSmallScreen] = React.useState(false);
 
   const sliderData = [
     {
@@ -61,41 +57,6 @@ const MainCarousel = () => {
   ];
 
   const ref = useRef(null);
-  useEffect(() => {
-    const isSmall = window.innerWidth < 1280;
-    setIsSmallScreen(isSmall);
-    if (isSmall) {
-      setDisplayQueryForm(false);
-    } else {
-      setDisplayQueryForm(true);
-      if (ref.current) {
-        ref.current.style.right = "46px";
-        ref.current.style.bottom = "0px";
-      }
-    }
-  }, []);
-  
-  // useEffect(() => {
-  //   const handleWindowResize = () => {
-  //     if (window.innerWidth < 1280) {
-  //       setDisplayQueryForm(false);
-  //       setIsSmallScreen(true);
-  //     } else {
-  //       setDisplayQueryForm(true);
-  //       setIsSmallScreen(false);
-  //       if (ref.current) {
-  //         ref.current.style.right = "46px";
-  //         ref.current.style.bottom = "0px";
-  //       }
-  //     }
-  //   };
-
-  //   handleWindowResize();
-  //   window.addEventListener("resize", handleWindowResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleWindowResize);
-  //   };
-  // }, [ref]);
 
   return (
     <div className="relative">
@@ -172,44 +133,6 @@ const MainCarousel = () => {
       <div className="xl:w-[62%] w-full">
         <CategoryCarousel />
       </div>
-      {displayQueryForm ? (
-        <div>
-          <div
-            ref={ref}
-            className={`xl:w-[35%] bg-white mx-auto w-full lg:absolute p-9 xl:p-0  ${
-              isSmallScreen ? "absolute top-0" : "absolute top-10"
-            } xl:bg-transparent lg:flex-row items-center xl:right-[46px]  z-10 shadow-2xl `}
-          >
-            <div className="xl:w-full flex justify-center items-center pt-2">
-              <JewelleryQueryForm setDisplayQueryForm={setDisplayQueryForm} />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div
-          className="flex justify-center items-center w-fit py-[5px] px-[10px] rounded-[44px] bg-[#ff007a] absolute right-[5%] top-[2%] md:top-[53%]  md:bottom-[38%] z-10 hover:cursor-pointer"
-          style={{
-            boxShadow:
-              "inset 3px 3px 3px #ffffff63, inset -3px -3px 3px #00000029",
-          }}
-          onClick={() => {
-            setDisplayQueryForm(true);
-          }}
-        >
-          <TbBrandGoogleBigQuery className="text-[#ffffff] lg:text-[40px] text-[20px] " />
-          <p
-            className=""
-            style={{
-              fontWeight: "600",
-              color: "white",
-              marginLeft: "10px",
-              marginBottom: "0px",
-            }}
-          >
-            Query Form
-          </p>
-        </div>
-      )}
     </div>
   );
 };
